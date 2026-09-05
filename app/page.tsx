@@ -7,6 +7,7 @@ import { LoadingState } from "@/components/states/LoadingState";
 import { EmptyState } from "@/components/states/EmptyState";
 import { ErrorState } from "@/components/states/ErrorState";
 import { AiComparison } from "@/components/AiComparison";
+import { EvidenceCard } from "@/components/EvidenceCard";
 import { DEMO_SEED_INPUTS } from "@/data/fixtures";
 import { cn } from "@/lib/utils";
 import type { Analysis } from "@/lib/types";
@@ -70,7 +71,7 @@ export default function Home() {
         <h1 className="max-w-[26ch] text-hero-sm font-light text-ink sm:text-hero">
           Should you actually do what that message says?
         </h1>
-        <p className="mt-5 max-w-[62ch] text-lede font-light text-ink-soft">
+        <p className="mt-5 max-w-[62ch] text-lede font-normal text-ink-soft">
           Paste a forwarded health message. In seconds, see how risky it would
           be to follow — with the score computed by a deterministic model, not
           guessed by an AI.
@@ -104,7 +105,7 @@ export default function Home() {
           }}
           rows={3}
           placeholder="e.g. blood pressure pills damage your kidneys, switch to bitter gourd juice…"
-          className="mt-3 w-full resize-none overflow-y-hidden rounded-xl border border-hairline-strong bg-canvas px-4 py-3.5 text-body font-light text-ink outline-none transition-colors duration-200 placeholder:text-ink-faint focus:border-ink"
+          className="mt-3 w-full resize-none overflow-y-hidden rounded-xl border border-hairline-strong bg-canvas px-4 py-3.5 text-body font-normal text-ink outline-none transition-colors duration-200 placeholder:text-ink-faint focus:border-ink"
         />
 
         <div className="mt-1.5 flex items-center justify-between gap-3 text-meta font-normal text-ink-faint">
@@ -173,6 +174,13 @@ export default function Home() {
         )}
         {status === "done" && data && (
           <>
+            {/* 官方记录命中时，它排在分数前面 —— 查到的记录是确定的，分数是估算的 */}
+            {data.evidence ? (
+              <div className="mb-6">
+                <EvidenceCard evidence={data.evidence} />
+              </div>
+            ) : null}
+
             <ResultCard data={data} />
 
             {/* WOW 的入口：一次点击展开对照屏 */}
@@ -188,7 +196,7 @@ export default function Home() {
                 <span className="text-action font-medium text-brand">
                   Why not just ask an AI? →
                 </span>
-                <span className="mt-1 block max-w-[62ch] text-meta font-light text-ink-soft">
+                <span className="mt-1 block max-w-[62ch] text-meta font-normal text-ink-soft">
                   We asked a general chatbot the same message. See what came
                   back.
                 </span>

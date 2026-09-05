@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { DegradedBanner } from "@/components/DegradedBanner";
 import { SectionLabel } from "@/components/SectionLabel";
 import { HriBreakdown } from "@/components/HriBreakdown";
+import { NoEvidenceNote } from "@/components/EvidenceCard";
 import { useCountUp } from "@/lib/useCountUp";
 
 /* score 是 HRI 危害指数：越高越危险。
@@ -67,12 +68,21 @@ export function ResultCard({ data }: { data: Analysis }) {
         {/* ---- 分解 ---- */}
         <div className="mt-9">
           <HriBreakdown contributions={data.contributions} band={data.band} />
+          {!data.evidence ? (
+            <div className="mt-5 border-t border-hairline pt-5">
+              <NoEvidenceNote
+                count={data.registry.count}
+                retrievedAt={data.registry.retrievedAt}
+                cataloguePage={data.registry.cataloguePage}
+              />
+            </div>
+          ) : null}
         </div>
 
         {/* ---- 解释 ---- */}
         <div className="mt-9">
           <SectionLabel>What this means</SectionLabel>
-          <p className="max-w-[65ch] text-body font-light text-ink">
+          <p className="max-w-[65ch] text-body font-normal text-ink">
             {data.explanation}
           </p>
         </div>

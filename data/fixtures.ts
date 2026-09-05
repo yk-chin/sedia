@@ -31,15 +31,15 @@ export const FALLBACK_PARSED: ParsedInput = {
 
 export const FALLBACK_ANALYSIS: Omit<
   Analysis,
-  "score" | "band" | "contributions" | "degraded"
+  "score" | "band" | "contributions" | "degraded" | "evidence" | "registry"
 > = {
-  headline: "High risk: may destabilise blood pressure",
+  headline: "High risk: do not act on this message",
   explanation:
-    "This message suggests stopping a prescribed blood pressure medication for an unproven bitter gourd remedy. Stopping suddenly can cause blood pressure to rebound, and the risk is greater for people already diagnosed with hypertension.",
+    "This message asks you to take or stop something based on an unverified claim, with no medical source behind it. Acting on it could interrupt proper treatment or expose you to an unsafe product, and the risk is greater for older adults and anyone managing a long-term condition.",
   actions: [
-    "Talk to your doctor or pharmacist before stopping any medication",
-    "Bitter gourd juice can be a dietary addition, not a replacement for prescribed medication",
-    "Keep monitoring blood pressure and seek care promptly if it fluctuates",
+    "Check with a doctor or pharmacist before starting or stopping anything",
+    "Treat an unregistered product or remedy as unsafe until a regulator says otherwise",
+    "Do not forward this message on until it has been verified",
   ],
 };
 
@@ -48,6 +48,9 @@ export const DEMO_SEED_INPUTS: string[] = [
   "An aunty forwarded this in the family group: blood pressure pills damage your kidneys if taken too long, better to stop now and drink bitter gourd juice every day instead — your blood pressure will normalise on its own.",
   "A message going viral claims a product called 'Insulin Recovery Pills' is 100% natural with no side effects and can replace diabetes injections — apparently many elders are already taking it.",
   "Saw a post saying elderly people can benefit from a modest daily dose of vitamin D3 for bone health, and should take it under a doctor's guidance.",
+  // 这条会命中 NPRA 官方撤销名单：Magic cream / NOT160506024K / 含汞。
+  // 前三条都是药品，撞不到化妆品名单 —— 没有这条，证据功能在 demo 里是空的。
+  "My aunty is selling this in our family group: 'Magic cream' for skin whitening, she says you will see results in 7 days and it is 100% herbal.",
 ];
 
 /* ============================================================

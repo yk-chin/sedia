@@ -47,8 +47,11 @@
   --text-action: 0.9375rem; /* 15px 建议条目 */
   --text-action--line-height: 1.55;
 
-  --text-body: 1rem; /* 16px 正文 —— Light 300 */
-  --text-body--line-height: 1.65;
+  /* 17px / Regular 400 —— 对齐 Apple HIG 的 iOS 正文尺寸。
+     目标用户是 45–65 岁，16px/Light 300 在手机和投影仪上都太细，
+     这是无障碍问题，不是审美问题 */
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
 
   --text-lede: 1.1875rem; /* 19px 首屏导语 */
   --text-lede--line-height: 1.5;
@@ -79,9 +82,11 @@
   --text-display--letter-spacing: -0.035em;
 
   /* ---- 色彩：锁定浅色 ---- */
-  --color-canvas: #fbfbfd;
+  /* 底色偏暖一点点。健康类产品用纯冷白会显得像检验报告，
+     这个偏移量很小，但整屏铺开之后是能感觉到的 */
+  --color-canvas: #fbfaf8;
   --color-surface: #ffffff;
-  --color-sunken: #f5f5f7;
+  --color-sunken: #f6f5f3;
   --color-ink: #1d1d1f;
   --color-ink-soft: #6e6e73;
   --color-ink-faint: #86868b;
@@ -137,7 +142,7 @@ body {
   background-color: var(--color-canvas);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis-weight: none;

@@ -10,7 +10,7 @@ export function ErrorState({
       <p className="text-eyebrow font-semibold uppercase text-risk-high">
         Something went wrong
       </p>
-      <p className="mt-3 max-w-[60ch] text-body font-light text-ink">
+      <p className="mt-3 max-w-[60ch] text-body font-normal text-ink">
         {message}
       </p>
       {onRetry ? (

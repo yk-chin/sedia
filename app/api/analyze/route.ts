@@ -3,6 +3,7 @@ import { z } from "zod";
 import { AnalyzeRequestSchema, ParsedInputSchema } from "@/lib/types";
 import type { Analysis, Factor, ParsedInput } from "@/lib/types";
 import { weightedScore, band } from "@/lib/core/scoring";
+import { findBlacklistHit, BLACKLIST_SOURCE } from "@/lib/core/blacklist";
 import { askStructured } from "@/lib/llm/client";
 import {
   PARSE_SYSTEM,
@@ -79,6 +80,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "输入不合法" }, { status: 400 });
   }
 
+  /* 步骤 0：查官方撤销名单 —— 确定性查表，完全不经过 LLM。
+     刻意放在 LLM 之前、且不受 DEMO_SAFE_MODE 影响：
+     哪怕 Gemini 整个挂掉，这条证据链照样成立。 */
+  const hit = findBlacklistHit(parsedReq.data.text);
+
   // 步骤 1：LLM 解析（失败自动降级到 fixtures）
   const parse = await askStructured({
     system: PARSE_SYSTEM,
@@ -113,6 +119,28 @@ export async function POST(req: Request) {
     explanation: explain.data.explanation,
     actions: explain.data.actions,
     degraded: parse.degraded || explain.degraded,
+    registry: {
+      count: BLACKLIST_SOURCE.count,
+      retrievedAt: BLACKLIST_SOURCE.retrievedAt,
+      cataloguePage: BLACKLIST_SOURCE.cataloguePage,
+    },
+    evidence: hit
+      ? {
+          product: hit.entry.product,
+          notifNo: hit.entry.notifNo,
+          substances: hit.entry.substances,
+          holder: hit.entry.holder,
+          matchedOn: hit.matchedOn,
+          source: {
+            publisher: BLACKLIST_SOURCE.publisher,
+            cataloguePage: BLACKLIST_SOURCE.cataloguePage,
+            evidencePage: BLACKLIST_SOURCE.evidencePage,
+            licence: BLACKLIST_SOURCE.licence,
+            retrievedAt: BLACKLIST_SOURCE.retrievedAt,
+            count: BLACKLIST_SOURCE.count,
+          },
+        }
+      : null,
   };
 
   return NextResponse.json(result);

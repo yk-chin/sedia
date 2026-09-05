@@ -1,0 +1,1186 @@
+{
+  "source": {
+    "name": "Cancelled Cosmetic Notifications",
+    "publisher": "National Pharmaceutical Regulatory Agency (NPRA), Ministry of Health Malaysia",
+    "cataloguePage": "https://data.gov.my/data-catalogue/cosmetic_notifications_cancelled",
+    "downloadUrl": "https://storage.data.gov.my/healthcare/cosmetic_notifications_cancelled.csv",
+    "evidencePage": "https://www.npra.gov.my/index.php/en/consumers/safety-information/cancellation-of-notified-cosmetic-products.html",
+    "licence": "CC BY 4.0",
+    "coverage": "Cosmetic products whose notification was cancelled after being found to contain scheduled poisons or banned substances.",
+    "retrievedAt": "2026-09-05",
+    "count": 125
+  },
+  "entries": [
+    {
+      "notifNo": "NOT180503436K",
+      "product": "3RD SERIES YANKO FADE OUT CREAM DAY CREAM",
+      "holder": "LURVEYA SDN. BHD.",
+      "manufacturer": "Taiwan Biotech Co., Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT180503437K",
+      "product": "3RD SERIES YANKO WHITENING CREAM NIGHT CREAM",
+      "holder": "LURVEYA SDN. BHD.",
+      "manufacturer": "Taiwan Biotech Co., Ltd.",
+      "substances": [
+        "TRETNON"
+      ]
+    },
+    {
+      "notifNo": "NOT180503439K",
+      "product": "5TH SERIES YANKO FADE OUT CREAM DAY CREAM",
+      "holder": "LURVEYA SDN. BHD.",
+      "manufacturer": "Taiwan Biotech Co., Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT180503440K",
+      "product": "5TH SERIES YANKO WHITENING CREAM NIGHT CREAM",
+      "holder": "LURVEYA SDN. BHD.",
+      "manufacturer": "Taiwan Biotech Co., Ltd.",
+      "substances": [
+        "TRETNON"
+      ]
+    },
+    {
+      "notifNo": "NOT180503441K",
+      "product": "7TH SERIES YANKO WHITENING CREAM DAY",
+      "holder": "LURVEYA SDN. BHD.",
+      "manufacturer": "Taiwan Biotech Co., Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT180503442K",
+      "product": "7TH SERIES YANKO WHITENING CREAM NIGHT",
+      "holder": "LURVEYA SDN. BHD.",
+      "manufacturer": "Taiwan Biotech Co., Ltd.",
+      "substances": [
+        "TRETNON"
+      ]
+    },
+    {
+      "notifNo": "NOT221004660K",
+      "product": "ABYRA SEAWEED SKIN CARE- SEAWEED CELL RENEWAL NIGHT CREAM",
+      "holder": "ABYRA STAR EMPIRE",
+      "manufacturer": "NEOCOSMED CO., LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT181003521K",
+      "product": "AILISI Acne Purifying Cream",
+      "holder": "Ai Li Si Beauty Enterprise",
+      "manufacturer": "TAIWAN LADIES COSMETICS CO., LTD.",
+      "substances": [
+        "CLINDAMYCIN"
+      ]
+    },
+    {
+      "notifNo": "NOT220202802K",
+      "product": "AIREE BEAUTYCARE NIGHT CREAM",
+      "holder": "EVONIZ COSMETIC INDUSTRIES",
+      "manufacturer": "Yamni Industry",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170600522K",
+      "product": "ALORA NIGHT GLOWING CREAM",
+      "holder": "DM BEAUTY RESOURCES",
+      "manufacturer": "GUANGZHOU SHANG ZHUANG COSMETICS CO. LTD",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT170801150K",
+      "product": "Apple Diamond Day Loose",
+      "holder": "GLOWING EXPERT APPLE DIAMOND",
+      "manufacturer": "Yamni Industry",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT190904416K",
+      "product": "ARMILA BEAUTY KAK ELL PIGMENT BOOSTER",
+      "holder": "ARMILA BERHAD",
+      "manufacturer": "GUANG-DING CORPORATION",
+      "substances": [
+        "STEROID"
+      ]
+    },
+    {
+      "notifNo": "NOT200205124K",
+      "product": "AS'S BEAUTY NIGHT CREAM",
+      "holder": "ASS BEAUTY ENTERPRISE",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170804496K",
+      "product": "Asdanne Whitening Freckle Day Cream",
+      "holder": "YS Medicals Sdn. Bhd.",
+      "manufacturer": "BEAUTY COSMETIC CO., LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT151204804K",
+      "product": "AURA GORGEOUS NIGHT CREAM",
+      "holder": "AURA GORGEOUS BEAUTY & HEALTHY",
+      "manufacturer": "ANFA INTERNATIONAL LABORATOIRES",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT180103663K",
+      "product": "Bao Fu Ling Skincare Cream",
+      "holder": "AMG Wellness Sdn. Bhd.",
+      "manufacturer": "Yantai Baofuling Biotechnology Co., Ltd.",
+      "substances": [
+        "DIPHENHYDRAMINE"
+      ]
+    },
+    {
+      "notifNo": "NOT180202851K",
+      "product": "Bao Fu Ling Snow Lotus Cream 15g",
+      "holder": "BAO FU LING GLOBAL ENTERPRISE SDN. BHD.",
+      "manufacturer": "Beijing Bao Shu Tang Sci-Tech Pharmaceutical Co., Ltd.",
+      "substances": [
+        "DIPHENHYDRAMINE"
+      ]
+    },
+    {
+      "notifNo": "NOT191200526K",
+      "product": "BB GLOW SOUL CREAM",
+      "holder": "NH BIZ RESOURCES",
+      "manufacturer": "ATHENA(GUANGZHOU) COSMETICS MANUFACTURER CO. LTD.",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT201107589K",
+      "product": "BEAUTE TREATMENT CREAM",
+      "holder": "NH BIZ RESOURCES",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "STEROID",
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT251103300K",
+      "product": "BEAUTY LOVE SKIN ESSENTIALS MALAYSIA REJUVENATING FACIAL TONER",
+      "holder": "KIEYRA OMAR LEGACY",
+      "manufacturer": "GLOWCAL MANUFACTURING CORP.",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT190900489K",
+      "product": "BEAUTY SLEEP TREATMENT CREAM",
+      "holder": "NH BIZ RESOURCES",
+      "manufacturer": "GUANGZHOU BITING COSMETIC CO., LTD.",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT190907469K",
+      "product": "BEAUTYWISE REJUVENATING TONER",
+      "holder": "CBB BEAUTYWISE GLOBAL",
+      "manufacturer": "GLOWCAL MANUFACTURING CORP.",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT220707389K",
+      "product": "BESTIE MOISTURIZER CREAM",
+      "holder": "KARISMA EMPAYAR SDN. BHD.",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT200604601K",
+      "product": "BIELA BEAUTY GLOWING NIGHT CREAM",
+      "holder": "BE FLAWLESS HQ MARKETING",
+      "manufacturer": "PT. ADEV NATURAL INDONESIA",
+      "substances": [
+        "MERCURY",
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT220601259K",
+      "product": "BL LEDEHH DAY CREAM 1",
+      "holder": "BL MIRA VENTURES",
+      "manufacturer": "Skin Care Products (Thailand) Co., Ltd.",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT190200461K",
+      "product": "BL SKINCARE DAY CREAM 2",
+      "holder": "BL MIRA VENTURES",
+      "manufacturer": "Skin Care Products (Thailand) Co., Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT190200462K",
+      "product": "BL SKINCARE NIGHT CREAM",
+      "holder": "BL MIRA VENTURES",
+      "manufacturer": "Skin Care Products (Thailand) Co., Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT190806808K",
+      "product": "Brilliant Skin Essentials Rejuvenating Facial Cream",
+      "holder": "BRILLIANT SKIN ESSENTIALS TRADING",
+      "manufacturer": "SBG MANUFACTURING INC.",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT190808060K",
+      "product": "Brilliant Skin Essentials Whitening Facial Cream",
+      "holder": "BRILLIANT SKIN ESSENTIALS TRADING",
+      "manufacturer": "SBG MANUFACTURING INC.",
+      "substances": [
+        "TRETNON"
+      ]
+    },
+    {
+      "notifNo": "NOT211005337K",
+      "product": "BUBBLE   BELLY    MULTI PURPOSE    ESSENCE",
+      "holder": "DTS SKINCARE  INDUSTRIES  SDN.BHD",
+      "manufacturer": "DTS SKINCARE  INDUSTRIES  SDN.BHD",
+      "substances": [
+        "METHYL SALICYLATE"
+      ]
+    },
+    {
+      "notifNo": "NOT221102979K",
+      "product": "BUBBLE BELLY BODY OIL SERUM",
+      "holder": "REINO GLOBAL SDN. BHD.",
+      "manufacturer": "M/S. ARGION COSMED INDIA PVT LTD",
+      "substances": [
+        "METHYL SALICYLATE",
+        "THYMOL",
+        "MENTHOL"
+      ]
+    },
+    {
+      "notifNo": "NOT221001118K",
+      "product": "Chomel Hand Sanitizer",
+      "holder": "Chomel Sdn Bhd",
+      "manufacturer": "FAR GO INDUSTRIES SDN. BHD.",
+      "substances": [
+        "ALCOHOL",
+        "ALCOHOL"
+      ]
+    },
+    {
+      "notifNo": "NOT180802788K",
+      "product": "CLAIR DE LUNE - P.TUBEROSE DAY CREAM",
+      "holder": "LAURUSTINUS SDN. BHD.",
+      "manufacturer": "Hung Choy Cosmetics Manufacturing Co Ltd",
+      "substances": [
+        "SULFAMETHOXAZOLE",
+        "KETOCONAZOLE",
+        "CHLORAMPHENICOL",
+        "TRIMETHOPRIM"
+      ]
+    },
+    {
+      "notifNo": "NOT180802789K",
+      "product": "CLAIR DE LUNE - S.INVOLUCRATA NIGHT CREAM",
+      "holder": "LAURUSTINUS SDN. BHD.",
+      "manufacturer": "Hung Choy Cosmetics Manufacturing Co Ltd",
+      "substances": [
+        "SULFAMETHOXAZOLE",
+        "CHLORPHENIRAMINE",
+        "METRONIDAZOLE",
+        "TRIMETHOPRIM",
+        "GRISEOFULVIN"
+      ]
+    },
+    {
+      "notifNo": "NOT220501104K",
+      "product": "CLEMIRA CARE CREAM",
+      "holder": "CLEMIRA GROUP TRADING",
+      "manufacturer": "KM COMPANY INC.",
+      "substances": [
+        "MICONAZOLE"
+      ]
+    },
+    {
+      "notifNo": "NOT191203847K",
+      "product": "DEEJA COSMETIC LAILA CREAM",
+      "holder": "TWIN RICH SOLUTION",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "STEROID",
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT171004771K",
+      "product": "DEEJA COSMETIC STAR CREAM",
+      "holder": "LIMAJARI MARKETING",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETNON"
+      ]
+    },
+    {
+      "notifNo": "NOT190108080K",
+      "product": "DEEJA COSMETICS ZULAI CREAM",
+      "holder": "TWIN RICH SOLUTION",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT180105344K",
+      "product": "DEEJA WRINKLE CREAM",
+      "holder": "LIMAJARI MARKETING",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT200603276K",
+      "product": "DELUXE BEAUTY - ULTRA LIGHTENING CREAM PEARL PERFECT FAIRNESS",
+      "holder": "LUNA GROUP SDN. BHD.",
+      "manufacturer": "ROYAL INTERNATIONAL.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT181002913K",
+      "product": "DNARS GOLD BALEN CREAM (NIGHT)",
+      "holder": "ROHBAN TRADE SDN. BHD.",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "HYDROQUINONE",
+        "STEROID"
+      ]
+    },
+    {
+      "notifNo": "NOT181002911K",
+      "product": "DNARS GOLD GLOWING SERUM (DAY)",
+      "holder": "ROHBAN TRADE SDN. BHD.",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "STEROID"
+      ]
+    },
+    {
+      "notifNo": "NOT181002912K",
+      "product": "DNARS GOLD LIFTHING SERUM (NIGHT)",
+      "holder": "ROHBAN TRADE SDN. BHD.",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT180104881K",
+      "product": "DNARS GOLDEN CREAM",
+      "holder": "ROHBAN TRADE SDN. BHD.",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT160802315K",
+      "product": "DNARS HONEY CREAM",
+      "holder": "ONEW COSMETICS",
+      "manufacturer": "Yamni Industry",
+      "substances": [
+        "TRETNON",
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT190506522K",
+      "product": "DNARS LUVEE CREAM",
+      "holder": "ROHBAN TRADE SDN. BHD.",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT180104880K",
+      "product": "DNARS NIEN CREAM",
+      "holder": "ROHBAN TRADE SDN. BHD.",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT131006026K",
+      "product": "DNARS YELLOW GOLD COLLAGEN",
+      "holder": "ORI HERBS COFFEE MARKETING",
+      "manufacturer": "Yamni Industry",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT171200081K",
+      "product": "DOLLY GLOW MIRACLE TREATMENT CREAM",
+      "holder": "NH BIZ RESOURCES",
+      "manufacturer": "Nund Skintech",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT180205661K",
+      "product": "FJURA - FACE POLISH TREATMENT",
+      "holder": "THEFJURA MARKETING",
+      "manufacturer": "KARVY MANUFACTURING INTERNATIONAL (PAKISTAN) PVT LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT220301718K",
+      "product": "FLASHHSKINZZ MOIST SUNSCREEN",
+      "holder": "FLASHH SKINZZ BEAUTY TRADING",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT220301716K",
+      "product": "FLASHHSKINZZ NIGHT CREAM",
+      "holder": "FLASHH SKINZZ BEAUTY TRADING",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT220301717K",
+      "product": "FLASHHSKINZZ TREATMENT CREAM",
+      "holder": "FLASHH SKINZZ BEAUTY TRADING",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT240606237K",
+      "product": "FLEXICARE INTENSE REPAIR SOOTHING CREAM",
+      "holder": "MEDICHE HOLDINGS SDN. BHD.",
+      "manufacturer": "GUANGDONG TICHY COSMETICS TECHNOLOGY CO.,LTD.",
+      "substances": [
+        "METHYL SALICYLATE"
+      ]
+    },
+    {
+      "notifNo": "NOT211002945K",
+      "product": "FOR U NIGHT CREAM - 15G",
+      "holder": "D AINS BEAUTY EMPIRE SDN. BHD",
+      "manufacturer": "Guangzhou Baiyunqu Yanmei Cosmetics Factory",
+      "substances": [
+        "TRETINOIN",
+        "STEROID",
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT220504138K",
+      "product": "Fruiser Instant Hand Sanitizer - Protect",
+      "holder": "Khobates Industries Sdn Bhd",
+      "manufacturer": "COSMETECH MANUFACTURING",
+      "substances": [
+        "ISOPROPYL ALCOHOL"
+      ]
+    },
+    {
+      "notifNo": "NOT190708278K",
+      "product": "FS TURMERIC CREAM",
+      "holder": "FS BEAUTY & SPA",
+      "manufacturer": "IREAL PLUS (THAILAND) CO.,LTD",
+      "substances": [
+        "STEROID",
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170900717K",
+      "product": "FULENZE - Whitening Freckle Day Cream",
+      "holder": "YS Medicals Sdn. Bhd.",
+      "manufacturer": "BEAUTY COSMETIC CO., LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT260203285K",
+      "product": "GB DAILY GLOW SKIN CREAM",
+      "holder": "GLOWING BEAUTY LEGACY SDN. BHD.",
+      "manufacturer": "SB INTERLAB CO. LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT240201187K",
+      "product": "GB HERBAL CREAM TREATMENT",
+      "holder": "GLOWING BEAUTY CARE",
+      "manufacturer": "SB INTERLAB CO. LTD.",
+      "substances": [
+        "STEROID",
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT240201186K",
+      "product": "GB NIGHT CREAM TREATMENT",
+      "holder": "GLOWING BEAUTY CARE",
+      "manufacturer": "SB INTERLAB CO. LTD.",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT210305182K",
+      "product": "GERBERA BEAUTY - TREATMENT & REPAIRING NIGHT CREAM",
+      "holder": "GERBERA BEAUTY",
+      "manufacturer": "GUANGZHOU MEISHENG COSMETICS CO. LTD",
+      "substances": [
+        "STEROID"
+      ]
+    },
+    {
+      "notifNo": "NOT210305183K",
+      "product": "GERBERA BEAUTY - WHITENING NIGHT CREAM",
+      "holder": "GERBERA BEAUTY",
+      "manufacturer": "GUANGZHOU MEISHENG COSMETICS CO. LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170201663K",
+      "product": "GG Pinky Day Cream for Skin",
+      "holder": "ONE WORLD COSMETICS",
+      "manufacturer": "Pan Rajdhevee Group Public Company Limited",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170806887K",
+      "product": "GLOW GLOWING N GLOWING",
+      "holder": "QALBU OCEAN ENTERPRISE",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT181006812K",
+      "product": "GLOW SKIN WHITE - BRIGHTENING CREAM",
+      "holder": "Figure Fit (M) Sdn Bhd",
+      "manufacturer": "ORACLE COS INTERNATIONAL",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT240703381K",
+      "product": "GLOWING HERBAL TREATMENT",
+      "holder": "GLOWING BEAUTY LEGACY SDN. BHD.",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY",
+        "STEROID"
+      ]
+    },
+    {
+      "notifNo": "NOT240703380K",
+      "product": "GLOWING NIGHT TREATMENT",
+      "holder": "GLOWING BEAUTY LEGACY SDN. BHD.",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "HYDROQUINONE",
+        "STEROID",
+        "TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT210604359K",
+      "product": "HAEMUN Cream",
+      "holder": "AXELTRADE RESOURCES PLT",
+      "manufacturer": "Hanbit Korea Co., Ltd",
+      "substances": [
+        "MICONAZOLE"
+      ]
+    },
+    {
+      "notifNo": "NOT230501908K",
+      "product": "HEBE - MICRO RESCUE CREAM (REDUCE ACNE SCAR)",
+      "holder": "HEBE INTERNATIONAL (PENANG) SDN. BHD.",
+      "manufacturer": "SANSBEAU COSMETICS SDN.BHD.",
+      "substances": [
+        "METRONIDAZOLE",
+        "CLINDAMYCIN"
+      ]
+    },
+    {
+      "notifNo": "NOT210403459K",
+      "product": "JC BEAUTY CULTURE RADIANCE RENEWAL SERUM",
+      "holder": "JECTIVE MARKETING SDN BHD",
+      "manufacturer": "GUANGZHOU JINSHENG BIOTECHNOLOGY CO., LTD.",
+      "substances": [
+        "TRETINOIN",
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT240501212K",
+      "product": "JF CREAM HERBA",
+      "holder": "JELITA FARA RESOURCES",
+      "manufacturer": "INTERCOSMED CO., LTD.",
+      "substances": [
+        "MERCURY",
+        "STEROID"
+      ]
+    },
+    {
+      "notifNo": "NOT230903286K",
+      "product": "KAK ELL KRIM RAWATAN",
+      "holder": "ARMILA BERHAD",
+      "manufacturer": "Fabullite Sdn Bhd",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT220903607K",
+      "product": "KARISMA AQUA BIRDS NEST",
+      "holder": "KARISMA EMPAYAR SDN. BHD.",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT210701629K",
+      "product": "KARISMA BIRDS NEST GEL",
+      "holder": "KARISMA EMPAYAR SDN. BHD.",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT160300509K",
+      "product": "Karisma Daycream",
+      "holder": "KARISMA COSMETIC",
+      "manufacturer": "MERRY COSMETIC LABORATORIES CO., LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT160300410K",
+      "product": "Karisma Nightcream Kunyit",
+      "holder": "KARISMA COSMETIC",
+      "manufacturer": "MERRY COSMETIC LABORATORIES CO., LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT160300556K",
+      "product": "Karisma Treatment Sarang Burung",
+      "holder": "KARISMA COSMETIC",
+      "manufacturer": "MERRY COSMETIC LABORATORIES CO., LTD",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT171003557K",
+      "product": "LABEAUTY BOOSTER NIGHT CREAM",
+      "holder": "LABEAUTY RESOURCES",
+      "manufacturer": "GUANGZHOU SHANG ZHUANG COSMETICS CO. LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT190107639K",
+      "product": "LANA RADIANCE NIGHT CREAM",
+      "holder": "QALBU OCEAN ENTERPRISE",
+      "manufacturer": "TOP ON COSMETICS INDUSTRIES",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT200306590K",
+      "product": "LS REPAIRING CREAM",
+      "holder": "AA MEGA LEGACY",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170200716K",
+      "product": "Luffiya Night Cream 1 & 2",
+      "holder": "ARRIANA ROSE BEAUTY RESOURCES",
+      "manufacturer": "LOLLA INDUSTRIES (MALAYSIA) SDN. BHD.",
+      "substances": [
+        "HYDROQUINONE",
+        "MERCURY",
+        "TRETNON"
+      ]
+    },
+    {
+      "notifNo": "NOT201004624K",
+      "product": "LUXE LILY BEAUTY PEELING OIL",
+      "holder": "AY & NR ENTERPRISE",
+      "manufacturer": "ADVANCE COSMETIC CO., LTD.",
+      "substances": [
+        "HYDROQUINONE",
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT160506024K",
+      "product": "Magic cream",
+      "holder": "MALIA MELLIA",
+      "manufacturer": "Nund Skintech",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170204393K",
+      "product": "MOLEEK SKINCARE ANTI PIGMENTATION CREAM PLUS",
+      "holder": "SEJAGAT GLOBAL RESOURCES",
+      "manufacturer": "Dby Smart Trading",
+      "substances": [
+        "TRETNON",
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT231201017K",
+      "product": "MOLLY CARE NIGHT CREAM",
+      "holder": "ABNER BEAUTY",
+      "manufacturer": "Fujian HaoJin Toiletries Co.,Ltd. (A subsidiary of BBC Group Limited)",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT200901749K",
+      "product": "MOMILA BEAUTY WHITENING CREAM",
+      "holder": "BYSHEILANAN ENTERPRISE",
+      "manufacturer": "Guangzhou Baiyunqu Yanmei Cosmetics Factory",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT190605136K",
+      "product": "MS SKINZ NIGHT CREAM",
+      "holder": "REDSKY CAPITAL",
+      "manufacturer": "Fabullite Sdn Bhd",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT150903694K",
+      "product": "NIGHT CREAM DOLLYS PINKY",
+      "holder": "LEGACY JAYA ENTERPRISE",
+      "manufacturer": "BENNY COSMETIC CO LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT200405779K",
+      "product": "Night Cream ForU By D Ains Beauty Empire",
+      "holder": "D AINS BEAUTY EMPIRE SDN. BHD",
+      "manufacturer": "Guangzhou Baiyunqu Yanmei Cosmetics Factory",
+      "substances": [
+        "HYDROQUINONE",
+        "STEROID",
+        "TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT220102940K",
+      "product": "Ninaskincare Skin Puteh Moisturizer",
+      "holder": "Nina Beauty Legacy",
+      "manufacturer": "GUANGZHOU BOXUANYA COSMETICS CO.,LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT200704119K",
+      "product": "NP BEAUTY FM CREAM",
+      "holder": "NP BEAUTY RESOURCES",
+      "manufacturer": "Guangzhou Baiyunqu Yanmei Cosmetics Factory",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT150900193K",
+      "product": "NURIZ  SHOPPE -UV PEARL CREAM",
+      "holder": "PROGRESSIVE  MIX INDUSTRIES",
+      "manufacturer": "PROGRESSIVE MIX INDUSTRIES",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT140304146K",
+      "product": "NV Anti Blemish Toner 1",
+      "holder": "NOUVELLE BEAUTY CENTRE SDN. BHD.",
+      "manufacturer": "QEMRICH SDN. BHD.",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT190702019K",
+      "product": "Qeziger Age-locking Recharging Spot A.M Cream",
+      "holder": "ELEMENSIVE MANUFACTURE ENTERPRISE",
+      "manufacturer": "MELL BIOTECH CO.,LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT251101952K",
+      "product": "REMY LAURE SOOTHING CREAM",
+      "holder": "AIM-DEMASUCO (M) SDN. BHD.",
+      "manufacturer": "SO.F.I.A COSMETIQUES",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT220106011K",
+      "product": "RISSA SKIN MOISTURISER",
+      "holder": "TWIN RICH SOLUTION",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "STEROID",
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT170402517K",
+      "product": "ROBISIS - Anti-Acne Whitening Day & Night Cream",
+      "holder": "YS Medicals Sdn. Bhd.",
+      "manufacturer": "Cosmaprof Co. Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT150501310K",
+      "product": "ROYAL EXPERT WHITENING CREAM",
+      "holder": "ORTUS EXPERT COSMETICS SDN. BHD.",
+      "manufacturer": "QCM COSMETICS INTERNATIONAL",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT180705530K",
+      "product": "RZAC BEAUTY CREME 2",
+      "holder": "R-ZAC SDN. BHD.",
+      "manufacturer": "SIAM YOKO CO. LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT241104182K",
+      "product": "SAQA GLOWING TURMERIC NIGHT TREATMENT CREAM",
+      "holder": "SNH SAKA EMPIRE",
+      "manufacturer": "GUANGZHOU SHANG ZHUANG COSMETICS CO. LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT210605524K",
+      "product": "SERENE TREATMENT CREAM",
+      "holder": "RICHGOLDS ENTERPRISE",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT210302928K",
+      "product": "SKIN DESSERT CREAM",
+      "holder": "AILEZEE EMPIRE",
+      "manufacturer": "Guangzhou Meisheng Cosmetic Co., Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT191103319K",
+      "product": "SKIN REVOLUTION - Acne Clearing Solution",
+      "holder": "SANSBEAU COSMETICS SDN.BHD.",
+      "manufacturer": "GUANGZHOU BAILICHEM COSMETICS CO.LTD",
+      "substances": [
+        "METRONIDAZOLE"
+      ]
+    },
+    {
+      "notifNo": "NOT220405081K",
+      "product": "SKIN REVOLUTION -PAP - BLEMISH FADE CREAM",
+      "holder": "FRANEVYNS BEAUTE INTERNATIONAL SDN.BHD.",
+      "manufacturer": "SANSBEAU COSMETICS SDN.BHD.",
+      "substances": [
+        "METRONIDAZOLE",
+        "CLINDAMYCIN"
+      ]
+    },
+    {
+      "notifNo": "NOT230202916K",
+      "product": "SKINMADE AZ & SALICYLIC ACID + LICORICE ROOT SERUM",
+      "holder": "Beauty Effect Store Sdn. Bhd.",
+      "manufacturer": "VNI SCIENTIFIC SDN BHD",
+      "substances": [
+        "AZELAIC ACID"
+      ]
+    },
+    {
+      "notifNo": "NOT210700039K",
+      "product": "SKINSISTER BABYSKIN TREATMENT CREAM",
+      "holder": "MAGNIVQUE EMPIRE RESOURCES",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT200706569K",
+      "product": "SL TWO INTENSIVE",
+      "holder": "D AMAN KOSMETIK & ENTERPRISE",
+      "manufacturer": "GUANGZHOU SHANG ZHUANG COSMETICS CO. LTD",
+      "substances": [
+        "STEROID",
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT221003358K",
+      "product": "Snow White Treatment Cream",
+      "holder": "BELLANASZ  BEAUTY",
+      "manufacturer": "ZHEJIANG L&J COSMETICS CO.,LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT180901024K",
+      "product": "SPARKLE MOON NIGHT CREAM",
+      "holder": "KARISMA EMPAYAR SDN. BHD.",
+      "manufacturer": "MERRY COSMETIC LABORATORIES CO., LTD",
+      "substances": [
+        "MERCURY",
+        "STEROID"
+      ]
+    },
+    {
+      "notifNo": "NOT180901005K",
+      "product": "SPARKLE SUN DAY CREAM",
+      "holder": "KARISMA EMPAYAR SDN. BHD.",
+      "manufacturer": "MERRY COSMETIC LABORATORIES CO., LTD",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT201003378K",
+      "product": "SWEET 13 SKINCARE TREATMENT CREAM",
+      "holder": "JANE BEAUTY AND BOUTIQUE",
+      "manufacturer": "Guangzhou Meisheng Cosmetic Co., Ltd.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170303016K",
+      "product": "SYMA MAGICAL SERUM",
+      "holder": "SYIMA GLOBAL ENTERPRISE",
+      "manufacturer": "SERI WV SDN. BHD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT170505954K",
+      "product": "TATI THERAPY CREAM 2",
+      "holder": "HDY AYLIA RESOURCES",
+      "manufacturer": "Nund Skintech",
+      "substances": [
+        "HYDROQUINONE AND TRETINOIN"
+      ]
+    },
+    {
+      "notifNo": "NOT171202673K",
+      "product": "TATI ULTRA NIGHT CREAM",
+      "holder": "NH BIZ RESOURCES",
+      "manufacturer": "Nund Skintech",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT211004813K",
+      "product": "TEMPIAS HAWA MASTER RECOVERY SKIN RSKIN",
+      "holder": "Tempias Hawa Sdn Bhd",
+      "manufacturer": "IREAL PLUS (THAILAND) CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT240302868K",
+      "product": "THE PERFECT DERMA CREAM",
+      "holder": "1PCT DAILY MANAGEMENT SDN. BHD.",
+      "manufacturer": "SKCC LABORATORIES SDN. BHD.",
+      "substances": [
+        "MICONAZOLE",
+        "PARACETAMOL"
+      ]
+    },
+    {
+      "notifNo": "NOT200800620K",
+      "product": "TONER TREATMENT EWSB",
+      "holder": "ENIQ WORLD SDN. BHD.",
+      "manufacturer": "GUANGZHOU BOYA COSMETICS CO LTD",
+      "substances": [
+        "TRETINOIN",
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT190107782K",
+      "product": "TRESORS NATURAL HERBAL CREAM",
+      "holder": "JOIS TRADING-IN",
+      "manufacturer": "TAIWAN FUNUNG COSMETIC WORKS CO., LTD.",
+      "substances": [
+        "KETOCONAZOLE",
+        "CHLORAMPHENICOL",
+        "TRIMETHOPRIM",
+        "SULFAMETHOXAZOLE"
+      ]
+    },
+    {
+      "notifNo": "NOT240102162K",
+      "product": "UFORA ADVANCE REPAIR SOLUTION",
+      "holder": "UFORA COSMETICS SDN. BHD.",
+      "manufacturer": "RADIANCE MANUFACTURING SDN. BHD.",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT180706781K",
+      "product": "V3 PREMIER BEAUTY FACIAL NIGHT CREAM",
+      "holder": "BRIGHT BEAUTY AND COSMETICS",
+      "manufacturer": "PT. ADEV NATURAL INDONESIA",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT170203545K",
+      "product": "VSL BEAUTY CARE TONER A",
+      "holder": "QEMRICH SDN. BHD.",
+      "manufacturer": "QEMRICH SDN. BHD.",
+      "substances": [
+        "HYDROQUINONE"
+      ]
+    },
+    {
+      "notifNo": "NOT220503570K",
+      "product": "ZEN GARDEN HAND SANITIZER",
+      "holder": "LOVING HANDS MARKETING",
+      "manufacturer": "LOVING HANDS MARKETING",
+      "substances": [
+        "ISOPROPYL ALCOHOL"
+      ]
+    },
+    {
+      "notifNo": "NOT220605474K",
+      "product": "ZMY Magnetic Aura NIGHT CREAM",
+      "holder": "ZEEMOYU BEAUTY & HEALTH",
+      "manufacturer": "CL COSMETIC INDUSTRIES SDN. BHD.",
+      "substances": [
+        "MERCURY"
+      ]
+    },
+    {
+      "notifNo": "NOT190906503K",
+      "product": "ZUYA SKINCARE NIGHT TREATMENT A CREAM",
+      "holder": "MASHA BEAUTY & HEALTH",
+      "manufacturer": "INTERCOSMED CO., LTD.",
+      "substances": [
+        "MERCURY"
+      ]
+    }
+  ]
+}

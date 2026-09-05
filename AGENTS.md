@@ -99,3 +99,13 @@
   不是代码能再压的。`TIMEOUT_MS` 已从 8 秒改到 15 秒（见铁律 #2）。
   现场如果 API 抖，直接开 `DEMO_SAFE_MODE=true`，那就是它存在的意义
 - Gemini 免费层每天每模型只有 20 次请求配额，调试很容易打满，打满后一律返回 429
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

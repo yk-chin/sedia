@@ -25,7 +25,7 @@ export function AiComparison({ data }: { data: Analysis }) {
         <h2 className="text-title-sm font-normal text-ink sm:text-title">
           Same message. Both say &ldquo;don&rsquo;t do it.&rdquo;
         </h2>
-        <p className="mt-2 max-w-[62ch] text-body font-light text-ink-soft">
+        <p className="mt-2 max-w-[62ch] text-body font-normal text-ink-soft">
           Only one of them can show you why — and give you the same answer
           twice.
         </p>
@@ -43,7 +43,7 @@ export function AiComparison({ data }: { data: Analysis }) {
             </span>
           </div>
 
-          <p className="mt-4 max-h-56 overflow-y-auto whitespace-pre-wrap rounded-[12px] bg-sunken p-4 text-meta font-light leading-relaxed text-ink-soft">
+          <p className="mt-4 max-h-56 overflow-y-auto whitespace-pre-wrap rounded-[12px] bg-sunken p-4 text-meta font-normal leading-relaxed text-ink-soft">
             {answer}
           </p>
 
@@ -61,7 +61,7 @@ export function AiComparison({ data }: { data: Analysis }) {
             />
           </dl>
 
-          <p className="mt-4 text-meta font-light text-ink-faint">
+          <p className="mt-4 text-meta font-normal text-ink-faint">
             Verbatim from {GENERIC_AI_ANSWER.model}, asked with no system
             prompt. It is correct — that is the point.
           </p>
@@ -97,14 +97,14 @@ export function AiComparison({ data }: { data: Analysis }) {
             />
           </dl>
 
-          <p className="mt-4 text-meta font-light text-ink-soft">
+          <p className="mt-4 text-meta font-normal text-ink-soft">
             Computed in <code className="font-normal">lib/core/scoring.ts</code>
             . The AI never touches the number.
           </p>
         </div>
       </div>
 
-      <p className="border-t border-hairline px-6 py-5 text-body font-light text-ink sm:px-9">
+      <p className="border-t border-hairline px-6 py-5 text-body font-normal text-ink sm:px-9">
         <span className="font-normal">
           &ldquo;Bukan AI yang cakap. Data KKM yang cakap.&rdquo;
         </span>{" "}
@@ -129,7 +129,7 @@ function Stat({
 }) {
   return (
     <div className="flex items-baseline justify-between gap-4 border-b border-hairline pb-2 last:border-b-0">
-      <dt className="text-meta font-light text-ink-faint">{label}</dt>
+      <dt className="text-meta font-normal text-ink-faint">{label}</dt>
       <dd
         className={`text-meta font-medium tabular-nums ${
           good ? "text-risk-low" : warn ? "text-risk-medium" : "text-ink"
