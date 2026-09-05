@@ -1,0 +1,120 @@
+/** 英文是基准语言：其余语言的键结构以它为准，漏键编译不过。 */
+export const en = {
+  nav: { analyse: "Check", history: "History", settings: "Settings" },
+  app: {
+    descriptor: "Health message risk check",
+    tagline: "Check a forwarded health message against official records.",
+  },
+  hero: {
+    title: "Should you actually do what that message says?",
+    lede: "Paste a forwarded health message. In seconds, see how risky it would be to follow — with the score computed by a deterministic model, not guessed by an AI.",
+  },
+  input: {
+    label: "Paste the message you received",
+    placeholder:
+      "e.g. blood pressure pills damage your kidneys, switch to bitter gourd juice…",
+    hintPress: "Press",
+    hintAnalyse: "to check",
+    analyse: "Check message",
+    analysing: "Checking…",
+    orTry: "Or try:",
+    example: "Example",
+  },
+  states: {
+    emptyTitle: "No result yet",
+    emptyHint:
+      "Paste a message above, or tap one of the examples to see how the score is built.",
+    loading: "Checking",
+    errorTitle: "Something went wrong",
+    retry: "Try again",
+    degraded:
+      "Using offline sample data — the AI service is temporarily unavailable. The deterministic scoring logic is unaffected.",
+  },
+  result: {
+    hri: "Harm Risk Index",
+    bandLow: "Low Risk",
+    bandMedium: "Medium Risk",
+    bandHigh: "High Risk",
+    breakdown: "Breakdown",
+    notByAi: "Not by AI",
+    deterministicNote:
+      "Computed by a deterministic scoring model — the same input always returns the same score.",
+    whatThisMeans: "What this means",
+    recommendedActions: "Recommended actions",
+  },
+  factors: {
+    irreversibility: "Irreversibility",
+    actionability: "Actionability",
+    evidence_gap: "Evidence Gap",
+    population_vulnerability: "Population Vulnerability",
+  },
+  evidence: {
+    found: "Official record found",
+    cancelled: "This product’s notification was cancelled by NPRA.",
+    product: "Product",
+    substance: "Substance detected",
+    notifNo: "Notification no.",
+    holder: "Notification holder",
+    verify: "Verify this yourself",
+    datasetLink: "Official dataset on data.gov.my",
+    npraLink: "NPRA cancellation notices & press releases",
+    sourceNote:
+      "Matched deterministically against the message — no AI involved in this lookup.",
+    noMatchLead: "No match in NPRA’s cancelled cosmetic notifications",
+    noMatchWarn: "Not finding a product here does not mean it is safe",
+    noMatchTail: "— the registry currently covers cosmetics only.",
+    viewDataset: "View the dataset",
+    records: "records, retrieved",
+  },
+  compare: {
+    open: "Why not just ask an AI?",
+    openHint:
+      "We asked a general chatbot the same message. See what came back.",
+    title: "Same message. Both say “don’t do it.”",
+    lede: "Only one of them can show you why — and give you the same answer twice.",
+    chatbot: "A general AI chatbot",
+    captured: "captured",
+    live: "this analysis, live",
+    riskScore: "Risk score",
+    auditable: "Auditable factors",
+    twice: "Same answer twice?",
+    length: "Length",
+    none: "none",
+    notGuaranteed: "not guaranteed",
+    identical: "always identical",
+    fourWeighted: "4, each weighted",
+    largestDriver: "Largest driver",
+    chatbotNote:
+      "Verbatim, asked with no system prompt. It is correct — that is the point.",
+    sihatNote: "The AI never touches the number.",
+    punchline: "“Bukan AI yang cakap. Data KKM yang cakap.”",
+    punchlineGloss: "— it is not the AI talking, it is the data talking.",
+    characters: "characters",
+  },
+  history: {
+    title: "History",
+    subtitle: "Saved on this device only. Nothing is uploaded.",
+    empty: "Nothing checked yet.",
+    emptyHint: "Messages you check will appear here.",
+    clear: "Clear history",
+    flagged: "Official record",
+    open: "Open",
+  },
+  settings: {
+    title: "Settings",
+    language: "Language",
+    languageHint: "Applies to the interface and the explanation you receive.",
+    data: "Data source",
+    dataHint:
+      "Product checks run against NPRA’s cancelled cosmetic notifications, published on data.gov.my under CC BY 4.0.",
+    privacy: "Privacy",
+    privacyHint:
+      "No account, no server-side storage. Your language choice and history stay in this browser.",
+    about: "About",
+  },
+  chooser: {
+    title: "Choose your language",
+    subtitle: "You can change this later in Settings.",
+    continue: "Continue",
+  },
+} as const;
