@@ -1,82 +1,101 @@
-import type { Analysis } from "@/lib/types";
-import { DegradedBanner } from "@/components/DegradedBanner";
+"use client";
 
-const BAND_STYLE: Record<Analysis["band"], string> = {
-  low: "bg-red-100 text-red-800",
-  medium: "bg-amber-100 text-amber-800",
-  high: "bg-emerald-100 text-emerald-800",
+import type { Analysis } from "@/lib/types";
+import { cn } from "@/lib/utils";
+import { DegradedBanner } from "@/components/DegradedBanner";
+import { SectionLabel } from "@/components/SectionLabel";
+import { HriBreakdown } from "@/components/HriBreakdown";
+import { useCountUp } from "@/lib/useCountUp";
+
+/* score 是 HRI 危害指数：越高越危险。
+   所以 high 是红、low 是绿 —— 和「分数越高越好」的直觉相反，颜色必须说清楚。 */
+const BAND_PILL: Record<Analysis["band"], string> = {
+  low: "bg-risk-low-tint text-risk-low",
+  medium: "bg-risk-medium-tint text-risk-medium",
+  high: "bg-risk-high-tint text-risk-high",
+};
+const BAND_DOT: Record<Analysis["band"], string> = {
+  low: "bg-risk-low",
+  medium: "bg-risk-medium",
+  high: "bg-risk-high",
 };
 const BAND_LABEL: Record<Analysis["band"], string> = {
-  low: "偏低",
-  medium: "中等",
-  high: "良好",
+  low: "Low Risk",
+  medium: "Medium Risk",
+  high: "High Risk",
 };
 
 export function ResultCard({ data }: { data: Analysis }) {
-  const max = Math.max(...data.contributions.map((c) => c.points), 1);
-  return (
-    <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      {data.degraded ? <DegradedBanner /> : null}
+  const score = useCountUp(data.score);
 
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-sm text-slate-500">评估结果</p>
-          <h2 className="mt-1 text-xl font-semibold">{data.headline}</h2>
-        </div>
-        <div className="shrink-0 text-right">
-          <div className="text-3xl font-semibold tabular-nums">
-            {data.score}
+  return (
+    <article className="sihat-rise overflow-hidden rounded-[20px] border border-hairline bg-surface shadow-card">
+      <div className="p-6 sm:p-9">
+        {data.degraded ? (
+          <div className="mb-7">
+            <DegradedBanner />
           </div>
+        ) : null}
+
+        {/* ---- 主视觉：分数 ---- */}
+        <p className="text-eyebrow font-semibold uppercase text-ink-soft">
+          Harm Risk Index
+        </p>
+
+        <div className="mt-3 flex flex-wrap items-end gap-x-5 gap-y-3">
+          <span className="text-display-sm font-[250] tabular-nums text-ink sm:text-display">
+            {score.toFixed(1)}
+          </span>
           <span
-            className={`mt-1 inline-block rounded px-2 py-0.5 text-xs font-medium ${BAND_STYLE[data.band]}`}
+            className={cn(
+              "mb-2 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-action font-semibold",
+              BAND_PILL[data.band]
+            )}
           >
+            <span
+              aria-hidden
+              className={cn("h-2 w-2 rounded-full", BAND_DOT[data.band])}
+            />
             {BAND_LABEL[data.band]}
           </span>
         </div>
-      </div>
 
-      {/* WOW 素材：因子贡献分解条 —— 这一块由确定性内核计算，评委看得见 */}
-      <div className="space-y-2">
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
-          分数构成（由确定性模型计算，不经过 AI）
-        </p>
-        {data.contributions.map((c) => (
-          <div key={c.key} className="flex items-center gap-3">
-            <span className="w-24 shrink-0 text-sm text-slate-600">
-              {c.label}
-            </span>
-            <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
-              <div
-                className="h-full rounded-full bg-slate-800 transition-all duration-300"
-                style={{ width: `${(c.points / max) * 100}%` }}
-              />
-            </div>
-            <span className="w-12 shrink-0 text-right text-sm tabular-nums text-slate-700">
-              {c.points}
-            </span>
-          </div>
-        ))}
-      </div>
+        <h2 className="mt-5 max-w-[24ch] text-title-sm font-normal text-ink sm:text-title">
+          {data.headline}
+        </h2>
 
-      <p className="text-sm leading-relaxed text-slate-700">
-        {data.explanation}
-      </p>
-
-      {data.actions.length > 0 ? (
-        <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
-            建议行动
-          </p>
-          <ul className="mt-2 space-y-1">
-            {data.actions.map((a, i) => (
-              <li key={i} className="flex gap-2 text-sm text-slate-700">
-                <span className="text-slate-400">{i + 1}.</span>
-                <span>{a}</span>
-              </li>
-            ))}
-          </ul>
+        {/* ---- 分解 ---- */}
+        <div className="mt-9">
+          <HriBreakdown contributions={data.contributions} band={data.band} />
         </div>
-      ) : null}
-    </div>
+
+        {/* ---- 解释 ---- */}
+        <div className="mt-9">
+          <SectionLabel>What this means</SectionLabel>
+          <p className="max-w-[65ch] text-body font-light text-ink">
+            {data.explanation}
+          </p>
+        </div>
+
+        {/* ---- 建议行动 ---- */}
+        {data.actions.length > 0 ? (
+          <div className="mt-9">
+            <SectionLabel>Recommended actions</SectionLabel>
+            <ol className="space-y-4">
+              {data.actions.map((a, i) => (
+                <li key={i} className="flex gap-4">
+                  <span className="mt-px w-5 shrink-0 text-action font-semibold tabular-nums text-ink-faint">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="max-w-[62ch] text-action font-normal text-ink">
+                    {a}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ) : null}
+      </div>
+    </article>
   );
 }

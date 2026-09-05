@@ -22,10 +22,36 @@ export const FactorSchema = z.object({
 });
 export type Factor = z.infer<typeof FactorSchema>;
 
-/** LLM 解析自然语言输入后的结构化结果 */
+/** LLM 解析自然语言输入后的结构化结果（SIHAT 抽取 schema，见 SPEC 核心流程第 1 步）
+    全部字段 optional：LLM 漏填某个字段时，zod 校验不整体失败，交给 toFactors() 的默认值兜底 */
 export const ParsedInputSchema = z.object({
   summary: z.string().min(1),
-  fields: z.record(z.string(), z.union([z.string(), z.number()])),
+  fields: z.object({
+    /** 消息的核心主张 */
+    claim: z.string().optional(),
+    /** 消息要求用户执行的动作，例如"停药"、"改喝苦瓜汁" */
+    action: z.string().optional(),
+    /** 涉及的物质/成分名 */
+    substance: z.string().optional(),
+    /** 涉及的产品名（如有） */
+    product_name: z.string().optional(),
+    /** 剂量描述（如有） */
+    dosage: z.string().optional(),
+    /** 目标人群，例如"高血压患者"、"孕妇" */
+    target_population: z.string().optional(),
+    /** 消息里声称的权威来源，例如"邻居经验"、"某医生" */
+    claimed_authority: z.string().optional(),
+    /** 一句话说明照做的具体医学风险，写在四个数字打分之前，防止 LLM 跳过推理直接瞎猜数字 */
+    risk_reasoning: z.string().optional(),
+    /** 不可逆性 0-10：是否涉及停用处方药、替代正规治疗、延误就医 */
+    irreversibility: z.number().min(0).max(10).optional(),
+    /** 行动性 0-10：是否要求立即执行一个具体动作 */
+    actionability: z.number().min(0).max(10).optional(),
+    /** 证据缺口 0-10：缺乏医学证据支持的程度 */
+    evidence_gap: z.number().min(0).max(10).optional(),
+    /** 人群脆弱性 0-10：指向孕妇/长者/慢性病患者/儿童的程度 */
+    population_vulnerability: z.number().min(0).max(10).optional(),
+  }),
 });
 export type ParsedInput = z.infer<typeof ParsedInputSchema>;
 

@@ -6,15 +6,19 @@ export function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="rounded-lg border border-red-200 bg-red-50 p-4">
-      <p className="text-sm font-medium text-red-800">出了点问题</p>
-      <p className="mt-1 text-sm text-red-700">{message}</p>
+    <div className="sihat-rise rounded-[20px] border border-hairline bg-risk-high-tint p-6 sm:p-7">
+      <p className="text-eyebrow font-semibold uppercase text-risk-high">
+        Something went wrong
+      </p>
+      <p className="mt-3 max-w-[60ch] text-body font-light text-ink">
+        {message}
+      </p>
       {onRetry ? (
         <button
           onClick={onRetry}
-          className="mt-3 rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
+          className="mt-5 rounded-full bg-ink px-5 py-2.5 text-action font-medium text-surface transition-transform duration-200 ease-out hover:opacity-90 active:scale-[0.98]"
         >
-          重试
+          Try again
         </button>
       ) : null}
     </div>

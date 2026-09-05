@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { AnalyzeRequestSchema, ParsedInputSchema } from "@/lib/types";
-import type { Analysis, Factor } from "@/lib/types";
+import type { Analysis, Factor, ParsedInput } from "@/lib/types";
 import { weightedScore, band } from "@/lib/core/scoring";
 import { askStructured } from "@/lib/llm/client";
 import {
@@ -25,35 +25,41 @@ const ExplainSchema = z.object({
   actions: z.array(z.string()),
 });
 
-/** 把解析结果映射成评分因子。题目公布后改这里。 */
-function toFactors(fields: Record<string, string | number>): Factor[] {
-  const num = (k: string, d: number) => {
-    const v = fields[k];
-    return typeof v === "number" ? v : Number(v) || d;
-  };
+/** 把解析结果映射成 HRI 评分因子。四个因子按 SPEC「评分因子」表定义，
+    权重 4/3/3/2、范围 0-10，直接对应 HRI = 100 × (4·Irr+3·Act+3·EvGap+2·Vuln)/120。
+    不设 invert：数值本身已经是"越高越危险"，加权和直接就是 HRI，不需要翻转。 */
+function toFactors(fields: ParsedInput["fields"]): Factor[] {
+  const num = (v: number | undefined, d: number) => (typeof v === "number" ? v : d);
   return [
     {
-      key: "f1",
-      label: "指标一",
+      key: "irreversibility",
+      label: "Irreversibility",
+      weight: 4,
+      raw: num(fields.irreversibility, 5),
+      min: 0,
+      max: 10,
+    },
+    {
+      key: "actionability",
+      label: "Actionability",
       weight: 3,
-      raw: num("指标一", 50),
+      raw: num(fields.actionability, 5),
       min: 0,
-      max: 100,
+      max: 10,
     },
     {
-      key: "f2",
-      label: "指标二",
+      key: "evidence_gap",
+      label: "Evidence Gap",
+      weight: 3,
+      raw: num(fields.evidence_gap, 5),
+      min: 0,
+      max: 10,
+    },
+    {
+      key: "population_vulnerability",
+      label: "Population Vulnerability",
       weight: 2,
-      raw: num("指标二", 20),
-      min: 0,
-      max: 60,
-      invert: true,
-    },
-    {
-      key: "f3",
-      label: "指标三",
-      weight: 1,
-      raw: num("指标三", 3),
+      raw: num(fields.population_vulnerability, 5),
       min: 0,
       max: 10,
     },

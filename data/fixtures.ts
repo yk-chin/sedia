@@ -3,16 +3,29 @@ import type { Analysis, ParsedInput } from "@/lib/types";
 /* ============================================================
    降级用的预置结果 (Fallback Fixtures)
    SAFE MODE 打开、API 挂掉、超时、校验失败时，返回这些。
-   评审当天这是你的保命符 —— 内容必须真实可信，不能是 "test test"。
-   题目公布后第一件事：把这里换成跟你们项目匹配的内容。
+   内容是 SIHAT 的真实场景（长辈转发"降压药伤肾改喝苦瓜汁"），
+   保证降级画面本身就是一个有说服力的高风险案例，不是空洞占位。
+   UI 语言统一为英文，这里的内容也保持英文一致。
    ============================================================ */
 
 export const FALLBACK_PARSED: ParsedInput = {
-  summary: "使用示例数据进行演示",
+  summary:
+    "An elder forwarded a message in the family group: blood pressure pills harm the kidneys, suggests stopping them for bitter gourd juice instead",
   fields: {
-    指标一: 62,
-    指标二: 18,
-    指标三: 4,
+    claim:
+      "Long-term use of blood pressure medication harms the kidneys; bitter gourd juice can restore normal blood pressure",
+    action: "Stop the blood pressure medication, drink bitter gourd juice daily",
+    substance: "Bitter gourd juice",
+    product_name: "",
+    dosage: "",
+    target_population: "People with high blood pressure",
+    claimed_authority: "Shared as a neighbour's personal experience",
+    risk_reasoning:
+      "Suddenly stopping blood pressure medication can cause blood pressure to rebound; bitter gourd juice has no reliable evidence to replace the medication",
+    irreversibility: 8,
+    actionability: 7,
+    evidence_gap: 9,
+    population_vulnerability: 6,
   },
 };
 
@@ -20,19 +33,19 @@ export const FALLBACK_ANALYSIS: Omit<
   Analysis,
   "score" | "band" | "contributions" | "degraded"
 > = {
-  headline: "整体处于中等水平，有明确改善空间",
+  headline: "High risk: may destabilise blood pressure",
   explanation:
-    "评估结果显示当前状况处于中间区间。主要拉低分数的是可及性相关的因子，而基础条件表现尚可。若能针对最弱的一项进行改善，总分有较明显的提升空间。",
+    "This message suggests stopping a prescribed blood pressure medication for an unproven bitter gourd remedy. Stopping suddenly can cause blood pressure to rebound, and the risk is greater for people already diagnosed with hypertension.",
   actions: [
-    "优先改善得分最低的那一项因子",
-    "对权重最高的因子建立持续监测",
-    "三个月后重新评估，比较变化幅度",
+    "Talk to your doctor or pharmacist before stopping any medication",
+    "Bitter gourd juice can be a dietary addition, not a replacement for prescribed medication",
+    "Keep monitoring blood pressure and seek care promptly if it fluctuates",
   ],
 };
 
-/** demo 首页展示用的示例输入，让评委一打开就有东西看 */
+/** demo 首页展示用的示例输入，评委一打开就会点这三条。UI 已定为纯英文，这三条也用英文。 */
 export const DEMO_SEED_INPUTS: string[] = [
-  "示例输入一：请把这里换成你们题目相关的真实场景描述",
-  "示例输入二：换成第二个典型场景",
-  "示例输入三：换成一个边界场景，用来展示系统的鲁棒性",
+  "An aunty forwarded this in the family group: blood pressure pills damage your kidneys if taken too long, better to stop now and drink bitter gourd juice every day instead — your blood pressure will normalise on its own.",
+  "A message going viral claims a product called 'Insulin Recovery Pills' is 100% natural with no side effects and can replace diabetes injections — apparently many elders are already taking it.",
+  "Saw a post saying elderly people can benefit from a modest daily dose of vitamin D3 for bone health, and should take it under a doctor's guidance.",
 ];
