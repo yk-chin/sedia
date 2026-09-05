@@ -16,7 +16,12 @@
 
 ## 架构铁律（不可协商）
 1. `lib/core/` 只放纯函数和确定性逻辑。**禁止**在此 import LLM、fetch 或任何网络调用。
-2. `lib/llm/client.ts` 是全项目唯一的 LLM 出口。必须保留 8 秒 timeout、1 次 retry、zod 校验、fallback。
+2. `lib/llm/client.ts` 是全项目唯一的 LLM 出口。必须保留 **15 秒 timeout**、1 次 retry、zod 校验、fallback。
+   - ⚠️ 原本写的是 8 秒，那是给已下线的 `gemini-2.5-flash` 定的。换成 `gemini-3.6-flash` 后实测单次调用要
+     **2.6–12.6 秒**，8 秒比真实延迟的中位数还短，会把大约一半**成功的**回答当成超时杀掉，导致界面几乎
+     永远显示「离线示例数据」。**不要改回 8 秒。**
+   - retry 只对 5xx 和网络抖动生效。4xx（429 配额耗尽、400 参数错）和 timeout 一律不重试：
+     实测有一次两个 attempt 全超时，白白烧掉 56 秒。这样单步最坏 15 秒封顶，整个请求最坏 30 秒。
 3. 所有 LLM 输出必须过 zod schema。校验失败走 `data/fixtures.ts` 的降级值，**绝不把异常抛给 UI**。
 4. 数字、排序、决策一律由 `lib/core/` 计算。LLM 只做三件事：解析非结构化输入、生成解释文案、决定调用哪个函数。
 5. 必须保留 `DEMO_SAFE_MODE=true` 开关：打开后全部 LLM 调用走预置结果，界面表现完全正常。
@@ -61,25 +66,36 @@
 - `lib/llm/client.ts` 的降级链（timeout / zod 校验失败 / `DEMO_SAFE_MODE`）已验证生效，异常不会抛给 UI
 - SPEC 已于 09:50 冻结，`docs/SPEC.md` 已写入正式内容
 
-**正在做（必做 1–4 尚未按新 SPEC 实现，当前代码还是通用占位脚手架）**
+- **HRI 四因子已落地**：`toFactors()` 用的是 SPEC「评分因子」表的真实四项（Irreversibility 4 /
+  Actionability 3 / Evidence Gap 3 / Population Vulnerability 2，范围 0–10，不设 invert）。
+  代数上与 SPEC 的 `HRI = 100 × (4·Irr+3·Act+3·EvGap+2·Vuln)/120` 完全等价
+- **界面已做成成品级**：自托管 Source Sans 3、完整字阶与 token、结果屏层级、CSS 动效
+  （分数 count-up、分解条生长、骨架屏）、375px 无横向溢出
+- **WOW 对照屏已实现**（`components/AiComparison.tsx`）—— 但叙事换了，见下面「已知的坑」
+- UI 语言：**纯英文**（不是 SPEC 原文写的 BM + English 双语，已于 2026-09-05 由用户拍板改掉，
+  `docs/SPEC.md` 明确不做 #3 已同步）
+
+**还没做（必做里剩下的）**
 - 必做 #1 NPRA 黑名单 ingestion + fuzzy match：未开始，`blacklist.json` 不存在
-- 必做 #2 LLM extraction schema + 三级降级链：当前 `lib/llm/client.ts` 只有「成功 / 整体 fallback 到 fixtures」两级，还没做「完整 → 部分字段 → 纯文本关键词」三级降级
-- 必做 #3 `lib/core/scoring.ts`：当前是占位的通用加权评分（指标一/二/三），还没换成 SPEC 定义的四因子（Irreversibility / Actionability / Evidence Gap / Population Vulnerability）+ `resolveVerdict()` 四态决策表 + 权重扰动翻转率输出
-- 必做 #4 结果屏 + 对抗对比屏：当前 UI（`page.tsx` / `ResultCard` 等）是占位的通用评分卡展示，还没做四态大字判定、HRI 四维分解条形图、左右对抗对比屏
+- 必做 #2 三级降级链：`lib/llm/client.ts` 目前只有「成功 / 整体 fallback」两级，
+  还没做「完整 → 部分字段 → 纯文本关键词」
+- 必做 #3 的 `resolveVerdict()` 四态决策表（BENAR/PALSU/MENGELIRUKAN/BELUM DISAHKAN）
+  和权重扰动翻转率：未开始。现在只有 HRI 这一条轴，没有 verdict 轴
 
 **已知的坑**
+- 🔴 **WOW 的前提被实测推翻了**：SPEC 假设通用 LLM 会答得含糊无来源。2026-09-05 实测，
+  把三条 `DEMO_SEED_INPUTS` 原样丢给 `gemini-3.6-flash`（无 system prompt），
+  **它三条全答对**，连良性的维生素 D 那条也正确判为合理。
+  按 SPEC 自己的「对抗样例的诚实门槛」，**不许硬编不公平对比**，所以对照屏改讲护城河叙事：
+  「AI 这次也对了 —— 但它给不出数字、给不出可指认的依据、每次措辞都不一样，
+  你没办法知道它下次什么时候会错」。左栏是逐字捕获的真实回答，标了模型名和捕获日期。
+  **谁都不许把它改成「AI 答错了」的假对比。**
+- 对照屏是 SPEC WOW 的**缩减版**：原文要的 `PALSU` + NPRA 撤销注册编号依赖必做 #1/#3，
+  两样都没做，所以右栏用的是真实存在的 HRI 内核输出，**不编造假的注册编号**
 - **前置动作未完成**：NPRA 名单真实覆盖率还没实测。命中率 < 5/10 是生死开关——必做 #1 要降级为固定 seed list，并在 slide 上明写 coverage 限制，不能当没看见
 - 两处「待补」：NPRA 撤销注册产品累计条目数（需从 `data.moh.gov.my` 拉取）、MCMC「约 14%」引述的原始报告页码。拉不到 NPRA 数字则主锚定基线降级为只用 NHMS 两条
 - 72 条人工标注 + ordinal logit 回归已明确放弃（N=72 配 4 个高度共线变量，系数不稳定），改用 expert-elicited 权重 + 15 条 pilot 敏感性分析，slide 上不能声称是估计结果
-- WOW 已从「同一输入连续两次结果一致」换成「左右对抗对比屏」——前者把可信度完全押在 Gemini 抽取稳定性上，评委现场换个新句式就能让它当场降级
-- Gemini API 偶发 HTTP 503（high demand）和超时属正常现象，降级链能兜住；如果 demo 现场频繁触发，可以考虑调大 `TIMEOUT_MS`（本次未做，超出当前任务范围）
-
-<!-- BEGIN:nextjs-agent-rules -->
-
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+- **速度**：页面渲染 57ms，但 `/api/analyze` 实测 14–22 秒 —— 两次串行 LLM 调用的天花板，
+  不是代码能再压的。`TIMEOUT_MS` 已从 8 秒改到 15 秒（见铁律 #2）。
+  现场如果 API 抖，直接开 `DEMO_SAFE_MODE=true`，那就是它存在的意义
+- Gemini 免费层每天每模型只有 20 次请求配额，调试很容易打满，打满后一律返回 429
