@@ -7,7 +7,10 @@ import { z } from "zod";
    任何一道触发，UI 都不会崩，只会走 fallback。
    ============================================================ */
 
-const TIMEOUT_MS = 8000;
+/* 15 秒不是拍脑袋定的：实测 gemini-3.6-flash 配当前 prompt，单次调用要 2.6–12.6 秒。
+   原本的 8 秒比真实延迟的中位数还短，会把大约一半【成功的】回答当成超时杀掉再重试，
+   结果就是界面几乎永远在显示「离线示例数据」。 */
+const TIMEOUT_MS = 15000;
 const MAX_RETRY = 1;
 
 /** 现场救命开关：Vercel 环境变量改成 true 后 redeploy，全部 LLM 调用走预置结果 */
@@ -18,7 +21,11 @@ const ENDPOINT = (model: string) =>
   `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 
 export class LlmUnavailable extends Error {
-  constructor(public reason: string) {
+  /** retryable=false 表示再试一次也必然是同样的结果（配额耗尽、请求非法、无权限） */
+  constructor(
+    public reason: string,
+    public retryable = true
+  ) {
     super(`LLM unavailable: ${reason}`);
   }
 }
@@ -26,7 +33,11 @@ export class LlmUnavailable extends Error {
 async function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   let t: ReturnType<typeof setTimeout>;
   const timeout = new Promise<never>((_, rej) => {
-    t = setTimeout(() => rej(new LlmUnavailable("timeout")), ms);
+    /* 超时不重试：15 秒还没回来说明服务端正在过载，立刻重试大概率还是超时
+       （实测过一次两个 attempt 全超时，白白花掉 56 秒）。
+       重试留给 5xx 和网络抖动那种真的可能一次就好的情况。
+       这样单步最坏 15 秒封顶，整个请求最坏 30 秒，而不是 60 秒。 */
+    t = setTimeout(() => rej(new LlmUnavailable("timeout", false)), ms);
   });
   try {
     return await Promise.race([p, timeout]);
@@ -57,7 +68,13 @@ async function callGeminiRaw(
 
   if (!res.ok) {
     const body = await res.text().catch(() => "");
-    throw new LlmUnavailable(`HTTP ${res.status} ${body.slice(0, 200)}`);
+    // 4xx 是客户端侧问题（429 配额耗尽、400 参数错、403 无权限），重试一万次也一样。
+    // 5xx 和网络抖动才值得再试一次。
+    const retryable = res.status >= 500;
+    throw new LlmUnavailable(
+      `HTTP ${res.status} ${body.slice(0, 200)}`,
+      retryable
+    );
   }
 
   const json = (await res.json()) as {
@@ -101,6 +118,8 @@ export async function askStructured<T>(args: {
       lastReason = `schema: ${parsed.error.issues[0]?.message ?? "invalid"}`;
     } catch (e) {
       lastReason = e instanceof Error ? e.message : String(e);
+      // 注定失败的错误直接降级，不再白等第二个 15 秒
+      if (e instanceof LlmUnavailable && !e.retryable) break;
     }
   }
   console.warn("[llm] 降级到 fallback:", lastReason);

@@ -6,6 +6,7 @@ import { ResultCard } from "@/components/ResultCard";
 import { LoadingState } from "@/components/states/LoadingState";
 import { EmptyState } from "@/components/states/EmptyState";
 import { ErrorState } from "@/components/states/ErrorState";
+import { AiComparison } from "@/components/AiComparison";
 import { DEMO_SEED_INPUTS } from "@/data/fixtures";
 import { cn } from "@/lib/utils";
 import type { Analysis } from "@/lib/types";
@@ -22,6 +23,7 @@ export default function Home() {
   const [error, setError] = useState("");
   // 默认 Ctrl（Windows / Linux），挂载后才判断是不是 Mac —— 避免 SSR 水合不一致
   const [modKey, setModKey] = useState("Ctrl");
+  const [showCompare, setShowCompare] = useState(false);
 
   const boxRef = useRef<HTMLTextAreaElement>(null);
 
@@ -45,6 +47,7 @@ export default function Home() {
     if (!input.trim()) return;
     setStatus("loading");
     setError("");
+    setShowCompare(false); // 新的一次分析，对照屏收回去
     try {
       const res = await fetch("/api/analyze", {
         method: "POST",
@@ -64,10 +67,10 @@ export default function Home() {
     <AppShell title="SIHAT" descriptor="Health message risk check">
       {/* ---- 首屏 ---- */}
       <section className="sihat-rise">
-        <h1 className="max-w-[19ch] text-hero-sm font-light text-ink sm:text-hero">
+        <h1 className="max-w-[26ch] text-hero-sm font-light text-ink sm:text-hero">
           Should you actually do what that message says?
         </h1>
-        <p className="mt-5 max-w-[58ch] text-lede font-light text-ink-soft">
+        <p className="mt-5 max-w-[62ch] text-lede font-light text-ink-soft">
           Paste a forwarded health message. In seconds, see how risky it would
           be to follow — with the score computed by a deterministic model, not
           guessed by an AI.
@@ -168,7 +171,33 @@ export default function Home() {
         {status === "error" && (
           <ErrorState message={error} onRetry={() => void run(text)} />
         )}
-        {status === "done" && data && <ResultCard data={data} />}
+        {status === "done" && data && (
+          <>
+            <ResultCard data={data} />
+
+            {/* WOW 的入口：一次点击展开对照屏 */}
+            {!showCompare && (
+              <button
+                onClick={() => setShowCompare(true)}
+                className={cn(
+                  "mt-6 w-full rounded-[20px] border border-brand/25 bg-brand-tint px-6 py-5 text-left",
+                  "transition-[transform,border-color] duration-300 hover:border-brand/50 active:scale-[0.995]"
+                )}
+                style={{ transitionTimingFunction: "var(--ease-emphasized)" }}
+              >
+                <span className="text-action font-medium text-brand">
+                  Why not just ask an AI? →
+                </span>
+                <span className="mt-1 block max-w-[62ch] text-meta font-light text-ink-soft">
+                  We asked a general chatbot the same message. See what came
+                  back.
+                </span>
+              </button>
+            )}
+
+            {showCompare && <AiComparison data={data} />}
+          </>
+        )}
       </section>
     </AppShell>
   );

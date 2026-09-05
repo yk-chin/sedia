@@ -26,11 +26,8 @@ export function HriBreakdown({
     <section>
       <SectionLabel
         trailing={
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-sunken px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.07em] text-ink-soft">
-            <span
-              aria-hidden
-              className="h-1.5 w-1.5 rounded-full bg-risk-low"
-            />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-brand/20 bg-brand-tint px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.07em] text-brand">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-brand" />
             Not by AI
           </span>
         }

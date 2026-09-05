@@ -84,7 +84,7 @@ export function ResultCard({ data }: { data: Analysis }) {
             <ol className="space-y-4">
               {data.actions.map((a, i) => (
                 <li key={i} className="flex gap-4">
-                  <span className="mt-px w-5 shrink-0 text-action font-semibold tabular-nums text-ink-faint">
+                  <span className="mt-px w-5 shrink-0 text-action font-semibold tabular-nums text-brand">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="max-w-[62ch] text-action font-normal text-ink">

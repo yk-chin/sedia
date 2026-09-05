@@ -49,3 +49,37 @@ export const DEMO_SEED_INPUTS: string[] = [
   "A message going viral claims a product called 'Insulin Recovery Pills' is 100% natural with no side effects and can replace diabetes injections — apparently many elders are already taking it.",
   "Saw a post saying elderly people can benefit from a modest daily dose of vitamin D3 for bone health, and should take it under a doctor's guidance.",
 ];
+
+/* ============================================================
+   对照屏用的通用 LLM 回答 —— 真实捕获，逐字保存，没有一个字是编的。
+
+   捕获方式：把 DEMO_SEED_INPUTS[0] 原样贴给 gemini-3.6-flash，
+   不给任何 system prompt，后面接一句 "Is this true? Should I do it?"，
+   就是普通人打开一个通用聊天机器人会做的事。
+
+   ⚠️ 重要：它答对了。三条示例全部答对了。
+   所以对照屏讲的不是「AI 答错了」，而是「AI 这次答对了，但你没有任何办法
+   知道它下次什么时候会错」—— 它给不出数字、给不出可指认的依据、每次问
+   措辞都不一样。SPEC「对抗样例的诚实门槛」明确禁止硬编不公平对比。
+   ============================================================ */
+export const GENERIC_AI_ANSWER = {
+  model: "gemini-3.6-flash",
+  capturedOn: "2026-09-05",
+  /** 逐字原文（含模型自己输出的 markdown 记号，渲染时只去掉记号、不改措辞） */
+  text: `**No, this is not true, and you should not stop taking your blood pressure medication.**
+
+WhatsApp forwards like this are very common, but following this advice can be dangerous. Here is what you need to know about blood pressure, your kidneys, and natural remedies:
+
+### 1. Uncontrolled Blood Pressure Damages Kidneys, Not the Pills
+The claim that blood pressure pills destroy kidneys gets the science backward. **Uncontrolled high blood pressure is actually one of the leading causes of chronic kidney disease and kidney failure.** High pressure damages the delicate blood vessels inside your kidneys over time, reducing their ability to filter waste from your blood.
+
+Furthermore, many of the most common classes of blood pressure medications (such as ACE inhibitors like lisinopril, or ARBs like losartan) are specifically given because they **protect** the kidneys, especially in people with diabetes or early kidney disease.
+
+### 2. Stopping Medication Abruptly is Dangerous
+Stopping blood pressure pills suddenly—sometimes called going "cold turkey"—can trigger a dangerous spike in blood pressure (known as rebound hypertension). This sudden jump in pressure significantly increases the immediate risk of a **stroke, heart attack, or hypertensive crisis**.
+
+### 3. Bitter Gourd Juice is Not a Replacement for Medication
+While bitter gourd (karela) is a healthy vegetable rich in vitamins and antioxidants, **there is no scientific evidence that drinking its juice can replace prescription blood pressure medication.**
+
+While dietary changes are a crucial part of managing blood pressure, they work best alongside medical treatment, not as a sudden replacement for proven therapies.`,
+} as const;
