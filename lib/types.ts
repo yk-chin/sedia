@@ -108,5 +108,7 @@ export type Analysis = z.infer<typeof AnalysisSchema>;
 
 export const AnalyzeRequestSchema = z.object({
   text: z.string().min(1).max(2000),
+  /** 解释文案要用哪种语言输出。缺省英文，老客户端不带这个字段也不会挂 */
+  lang: z.enum(["en", "ms", "zh"]).default("en"),
 });
 export type AnalyzeRequest = z.infer<typeof AnalyzeRequestSchema>;

@@ -7,6 +7,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { HriBreakdown } from "@/components/HriBreakdown";
 import { NoEvidenceNote } from "@/components/EvidenceCard";
 import { useCountUp } from "@/lib/useCountUp";
+import { useLang } from "@/lib/i18n/context";
 
 /* score 是 HRI 危害指数：越高越危险。
    所以 high 是红、low 是绿 —— 和「分数越高越好」的直觉相反，颜色必须说清楚。 */
@@ -20,14 +21,14 @@ const BAND_DOT: Record<Analysis["band"], string> = {
   medium: "bg-risk-medium",
   high: "bg-risk-high",
 };
-const BAND_LABEL: Record<Analysis["band"], string> = {
-  low: "Low Risk",
-  medium: "Medium Risk",
-  high: "High Risk",
-};
-
 export function ResultCard({ data }: { data: Analysis }) {
+  const { t } = useLang();
   const score = useCountUp(data.score);
+  const bandLabel = {
+    low: t.result.bandLow,
+    medium: t.result.bandMedium,
+    high: t.result.bandHigh,
+  }[data.band];
 
   return (
     <article className="sihat-rise overflow-hidden rounded-[20px] border border-hairline bg-surface shadow-card">
@@ -40,7 +41,7 @@ export function ResultCard({ data }: { data: Analysis }) {
 
         {/* ---- 主视觉：分数 ---- */}
         <p className="text-eyebrow font-semibold uppercase text-ink-soft">
-          Harm Risk Index
+          {t.result.hri}
         </p>
 
         <div className="mt-3 flex flex-wrap items-end gap-x-5 gap-y-3">
@@ -57,7 +58,7 @@ export function ResultCard({ data }: { data: Analysis }) {
               aria-hidden
               className={cn("h-2 w-2 rounded-full", BAND_DOT[data.band])}
             />
-            {BAND_LABEL[data.band]}
+            {bandLabel}
           </span>
         </div>
 
@@ -81,7 +82,7 @@ export function ResultCard({ data }: { data: Analysis }) {
 
         {/* ---- 解释 ---- */}
         <div className="mt-9">
-          <SectionLabel>What this means</SectionLabel>
+          <SectionLabel>{t.result.whatThisMeans}</SectionLabel>
           <p className="max-w-[65ch] text-body font-normal text-ink">
             {data.explanation}
           </p>
@@ -90,7 +91,7 @@ export function ResultCard({ data }: { data: Analysis }) {
         {/* ---- 建议行动 ---- */}
         {data.actions.length > 0 ? (
           <div className="mt-9">
-            <SectionLabel>Recommended actions</SectionLabel>
+            <SectionLabel>{t.result.recommendedActions}</SectionLabel>
             <ol className="space-y-4">
               {data.actions.map((a, i) => (
                 <li key={i} className="flex gap-4">

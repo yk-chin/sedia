@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AppShell } from "@/components/shell/AppShell";
 import { ResultCard } from "@/components/ResultCard";
 import { LoadingState } from "@/components/states/LoadingState";
 import { EmptyState } from "@/components/states/EmptyState";
@@ -9,6 +8,8 @@ import { ErrorState } from "@/components/states/ErrorState";
 import { AiComparison } from "@/components/AiComparison";
 import { EvidenceCard } from "@/components/EvidenceCard";
 import { DEMO_SEED_INPUTS } from "@/data/fixtures";
+import { useLang } from "@/lib/i18n/context";
+import { addHistory } from "@/lib/history";
 import { cn } from "@/lib/utils";
 import type { Analysis } from "@/lib/types";
 
@@ -18,6 +19,7 @@ type Status = "idle" | "loading" | "done" | "error";
 const MAX_CHARS = 2000;
 
 export default function Home() {
+  const { t, lang } = useLang();
   const [text, setText] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [data, setData] = useState<Analysis | null>(null);
@@ -25,7 +27,6 @@ export default function Home() {
   // 默认 Ctrl（Windows / Linux），挂载后才判断是不是 Mac —— 避免 SSR 水合不一致
   const [modKey, setModKey] = useState("Ctrl");
   const [showCompare, setShowCompare] = useState(false);
-
   const boxRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -38,7 +39,6 @@ export default function Home() {
     if (!el) return;
     el.style.height = "auto";
     el.style.height = `${Math.min(el.scrollHeight, 320)}px`;
-    // 只有真的超过上限才出滚动条，否则贴合内容时会因为 1px 取整误差闪出一条
     el.style.overflowY = el.scrollHeight > 320 ? "auto" : "hidden";
   }, [text]);
 
@@ -48,16 +48,18 @@ export default function Home() {
     if (!input.trim()) return;
     setStatus("loading");
     setError("");
-    setShowCompare(false); // 新的一次分析，对照屏收回去
+    setShowCompare(false);
     try {
       const res = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: input }),
+        body: JSON.stringify({ text: input, lang }),
       });
       if (!res.ok) throw new Error(`Server returned ${res.status}`);
-      setData((await res.json()) as Analysis);
+      const parsed = (await res.json()) as Analysis;
+      setData(parsed);
       setStatus("done");
+      addHistory(input, parsed);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Unknown error");
       setStatus("error");
@@ -65,20 +67,16 @@ export default function Home() {
   }
 
   return (
-    <AppShell title="SIHAT" descriptor="Health message risk check">
-      {/* ---- 首屏 ---- */}
+    <>
       <section className="sihat-rise">
         <h1 className="max-w-[26ch] text-hero-sm font-light text-ink sm:text-hero">
-          Should you actually do what that message says?
+          {t.hero.title}
         </h1>
-        <p className="mt-5 max-w-[62ch] text-lede font-normal text-ink-soft">
-          Paste a forwarded health message. In seconds, see how risky it would
-          be to follow — with the score computed by a deterministic model, not
-          guessed by an AI.
+        <p className="mt-5 max-w-[62ch] text-lede text-ink-soft">
+          {t.hero.lede}
         </p>
       </section>
 
-      {/* ---- 输入 ---- */}
       <section
         className="sihat-rise mt-10 rounded-[20px] border border-hairline bg-surface p-5 shadow-card sm:p-7"
         style={{ animationDelay: "90ms" }}
@@ -87,7 +85,7 @@ export default function Home() {
           htmlFor="input"
           className="text-eyebrow font-semibold uppercase text-ink-soft"
         >
-          Paste the message you received
+          {t.input.label}
         </label>
 
         <textarea
@@ -97,27 +95,26 @@ export default function Home() {
           maxLength={MAX_CHARS}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => {
-            // ⌘/Ctrl + Enter 直接提交，不用去够按钮
             if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
               e.preventDefault();
               void run(text);
             }
           }}
           rows={3}
-          placeholder="e.g. blood pressure pills damage your kidneys, switch to bitter gourd juice…"
-          className="mt-3 w-full resize-none overflow-y-hidden rounded-xl border border-hairline-strong bg-canvas px-4 py-3.5 text-body font-normal text-ink outline-none transition-colors duration-200 placeholder:text-ink-faint focus:border-ink"
+          placeholder={t.input.placeholder}
+          className="mt-3 w-full resize-none overflow-y-hidden rounded-xl border border-hairline-strong bg-canvas px-4 py-3.5 text-body text-ink outline-none transition-colors duration-200 placeholder:text-ink-faint focus:border-ink"
         />
 
-        <div className="mt-1.5 flex items-center justify-between gap-3 text-meta font-normal text-ink-faint">
+        <div className="mt-1.5 flex items-center justify-between gap-3 text-meta text-ink-faint">
           <span className="hidden items-center gap-1.5 sm:inline-flex">
-            Press
+            {t.input.hintPress}
             <kbd className="rounded-[5px] border border-hairline-strong bg-surface px-1.5 py-0.5 text-[0.6875rem] font-medium text-ink-soft">
               {modKey}
             </kbd>
             <kbd className="rounded-[5px] border border-hairline-strong bg-surface px-1.5 py-0.5 text-[0.6875rem] font-medium text-ink-soft">
               Enter
             </kbd>
-            to analyse
+            {t.input.hintAnalyse}
           </span>
           <span className="ml-auto tabular-nums">
             {text.length} / {MAX_CHARS}
@@ -130,16 +127,15 @@ export default function Home() {
             disabled={busy || !text.trim()}
             className={cn(
               "rounded-full bg-ink px-6 py-3 text-action font-medium text-surface",
-              "transition-all duration-200 ease-out hover:opacity-90 active:scale-[0.98]",
+              "transition-all duration-200 hover:opacity-90 active:scale-[0.98]",
               "disabled:pointer-events-none disabled:opacity-30"
             )}
+            style={{ transitionTimingFunction: "var(--ease-standard)" }}
           >
-            {busy ? "Analysing…" : "Analyse message"}
+            {busy ? t.input.analysing : t.input.analyse}
           </button>
 
-          <span className="ml-1 text-meta font-normal text-ink-faint">
-            Or try:
-          </span>
+          <span className="ml-1 text-meta text-ink-faint">{t.input.orTry}</span>
           {DEMO_SEED_INPUTS.map((s, i) => (
             <button
               key={i}
@@ -149,24 +145,21 @@ export default function Home() {
                 void run(s);
               }}
               className={cn(
-                "rounded-full border border-hairline-strong px-4 py-2 text-meta font-normal text-ink-soft",
-                "transition-all duration-200 ease-out hover:border-ink hover:text-ink active:scale-[0.98]",
+                "rounded-full border border-hairline-strong px-4 py-2 text-meta text-ink-soft",
+                "transition-all duration-200 hover:border-ink hover:text-ink active:scale-[0.98]",
                 "disabled:pointer-events-none disabled:opacity-40"
               )}
+              style={{ transitionTimingFunction: "var(--ease-standard)" }}
             >
-              Example {i + 1}
+              {t.input.example} {i + 1}
             </button>
           ))}
         </div>
       </section>
 
-      {/* ---- 结果 ---- */}
       <section className="mt-8">
         {status === "idle" && (
-          <EmptyState
-            title="No result yet"
-            hint="Paste a message above, or tap one of the examples to see how the score is built."
-          />
+          <EmptyState title={t.states.emptyTitle} hint={t.states.emptyHint} />
         )}
         {status === "loading" && <LoadingState />}
         {status === "error" && (
@@ -174,7 +167,7 @@ export default function Home() {
         )}
         {status === "done" && data && (
           <>
-            {/* 官方记录命中时，它排在分数前面 —— 查到的记录是确定的，分数是估算的 */}
+            {/* 官方记录命中时排在分数前面 —— 查到的记录是确定的，分数是估算的 */}
             {data.evidence ? (
               <div className="mb-6">
                 <EvidenceCard evidence={data.evidence} />
@@ -183,7 +176,6 @@ export default function Home() {
 
             <ResultCard data={data} />
 
-            {/* WOW 的入口：一次点击展开对照屏 */}
             {!showCompare && (
               <button
                 onClick={() => setShowCompare(true)}
@@ -194,11 +186,10 @@ export default function Home() {
                 style={{ transitionTimingFunction: "var(--ease-emphasized)" }}
               >
                 <span className="text-action font-medium text-brand">
-                  Why not just ask an AI? →
+                  {t.compare.open} →
                 </span>
-                <span className="mt-1 block max-w-[62ch] text-meta font-normal text-ink-soft">
-                  We asked a general chatbot the same message. See what came
-                  back.
+                <span className="mt-1 block max-w-[62ch] text-meta text-ink-soft">
+                  {t.compare.openHint}
                 </span>
               </button>
             )}
@@ -207,6 +198,6 @@ export default function Home() {
           </>
         )}
       </section>
-    </AppShell>
+    </>
   );
 }

@@ -32,8 +32,14 @@
 
 @theme {
   /* ---- 字体 ---- */
+  /* 拉丁字形走自托管的 Source Sans 3；中文字形按顺序回落到系统字体。
+     苹方（PingFang SC）是 Apple 专有字体，**法律上不能自托管**，
+     但在 Apple 设备上直接写字体名就能命中。Windows 回落微软雅黑，
+     Android / Linux 回落思源黑体。这样中文零下载、三端都有像样的字形 ——
+     自托管一套 Noto Sans SC 全字集要 10MB 以上，为了 UI 上这几十个字不值得。 */
   --font-sans: "Source Sans 3", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC",
+    "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", sans-serif;
 
   /* ---- 字阶：尺寸 + 配套行高/字距成对定义 ----
      字重不写进这里，由 font-* 工具类显式指定，避免叠加时互相打架 */

@@ -68,16 +68,28 @@ export const EXPLAIN_SYSTEM = `
 - 绝对不要修改、重算、质疑给定的 HRI 分数
 - 绝对不要给出给定数据之外的新数字
 - 语气直接、不制造恐慌，但如果分数高就要明确说清楚风险，不要含糊其辞
-- **语言铁律**：headline / explanation / actions 一律只用英文（English），不要出现中文
-  或马来文，也不要中英混杂
+- **语言铁律**：headline / explanation / actions 必须**全部**用下面指定的那一种语言输出，
+  不许混入第二种语言
 
 只输出 JSON，不要 markdown 代码块：
 {
-  "headline": "一句话风险结论（英文），例如 'High risk: may destabilise blood pressure'",
-  "explanation": "两到三句话（英文），讲清楚风险主要来自哪个因子、为什么",
-  "actions": ["具体可执行的建议1（英文）", "建议2", "建议3"]
+  "headline": "一句话风险结论，例如 'High risk: may destabilise blood pressure'",
+  "explanation": "两到三句话，讲清楚风险主要来自哪个因子、为什么",
+  "actions": ["具体可执行的建议1", "建议2", "建议3"]
 }
 `.trim();
+
+/** 用户选的界面语言 = 解释文案的语言。翻译由模型直接生成，不做二次翻译。 */
+const OUTPUT_LANGUAGE: Record<string, string> = {
+  en: "English",
+  ms: "Bahasa Melayu (Malay)",
+  zh: "简体中文（Simplified Chinese）",
+};
+
+export function explainSystemFor(lang: string): string {
+  const name = OUTPUT_LANGUAGE[lang] ?? OUTPUT_LANGUAGE.en;
+  return `${EXPLAIN_SYSTEM}\n\n**本次输出语言：${name}。headline、explanation、actions 三个字段全部用${name}写。**`;
+}
 
 export function explainUserPrompt(payload: {
   score: number;

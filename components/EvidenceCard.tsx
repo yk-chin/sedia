@@ -1,4 +1,7 @@
+"use client";
+
 import type { Analysis } from "@/lib/types";
+import { useLang } from "@/lib/i18n/context";
 
 /**
  * 官方撤销记录 —— 全项目最重要的一块。
@@ -12,6 +15,7 @@ export function EvidenceCard({
 }: {
   evidence: NonNullable<Analysis["evidence"]>;
 }) {
+  const { t } = useLang();
   const { source } = evidence;
 
   return (
@@ -20,19 +24,19 @@ export function EvidenceCard({
         <div className="flex items-center gap-2">
           <span aria-hidden className="h-2 w-2 rounded-full bg-risk-high" />
           <h2 className="text-eyebrow font-semibold uppercase text-risk-high">
-            Official record found
+            {t.evidence.found}
           </h2>
         </div>
         <p className="mt-3 text-title-sm font-normal text-ink">
-          This product&rsquo;s notification was cancelled by NPRA.
+          {t.evidence.cancelled}
         </p>
       </div>
 
       <dl className="divide-y divide-risk-high/10 px-6 sm:px-8">
-        <Row label="Product">
+        <Row label={t.evidence.product}>
           <span className="font-medium">{evidence.product}</span>
         </Row>
-        <Row label="Substance detected">
+        <Row label={t.evidence.substance}>
           <span className="flex flex-wrap justify-end gap-1.5">
             {evidence.substances.map((s) => (
               <span
@@ -44,33 +48,31 @@ export function EvidenceCard({
             ))}
           </span>
         </Row>
-        <Row label="Notification no.">
+        <Row label={t.evidence.notifNo}>
           <code className="font-normal tabular-nums">{evidence.notifNo}</code>
         </Row>
         {evidence.holder ? (
-          <Row label="Notification holder">{evidence.holder}</Row>
+          <Row label={t.evidence.holder}>{evidence.holder}</Row>
         ) : null}
       </dl>
 
       {/* 可点击的证据 —— 导师明确要求的部分 */}
       <div className="px-6 pb-6 pt-5 sm:px-8">
         <p className="text-eyebrow font-semibold uppercase text-ink-soft">
-          Verify this yourself
+          {t.evidence.verify}
         </p>
         <div className="mt-3 flex flex-col gap-2.5">
           <EvidenceLink href={source.cataloguePage}>
-            Official dataset on data.gov.my
+            {t.evidence.datasetLink}
           </EvidenceLink>
           <EvidenceLink href={source.evidencePage}>
-            NPRA cancellation notices &amp; press releases
+            {t.evidence.npraLink}
           </EvidenceLink>
         </div>
 
-        <p className="mt-5 text-meta font-normal leading-relaxed text-ink-soft">
-          Source: {source.publisher}. {source.count} cancelled cosmetic
-          notifications, retrieved {source.retrievedAt}, licensed{" "}
-          {source.licence}. Matched deterministically against the message —
-          no AI involved in this lookup.
+        <p className="mt-5 text-meta leading-relaxed text-ink-soft">
+          {source.publisher} · {source.count} {t.evidence.records}{" "}
+          {source.retrievedAt} · {source.licence}. {t.evidence.sourceNote}
         </p>
       </div>
     </section>
@@ -87,21 +89,19 @@ export function NoEvidenceNote({
   retrievedAt: string;
   cataloguePage: string;
 }) {
+  const { t } = useLang();
   return (
-    <p className="text-meta font-normal leading-relaxed text-ink-faint">
-      No match in NPRA&rsquo;s cancelled cosmetic notifications ({count}{" "}
-      records, retrieved {retrievedAt}).{" "}
-      <span className="text-ink-soft">
-        Not finding a product here does not mean it is safe
-      </span>{" "}
-      — the registry currently covers cosmetics only.{" "}
+    <p className="text-meta leading-relaxed text-ink-faint">
+      {t.evidence.noMatchLead} ({count} {t.evidence.records} {retrievedAt}).{" "}
+      <span className="text-ink-soft">{t.evidence.noMatchWarn}</span>{" "}
+      {t.evidence.noMatchTail}{" "}
       <a
         href={cataloguePage}
         target="_blank"
         rel="noopener noreferrer"
         className="text-brand underline decoration-brand/30 underline-offset-2 transition-colors duration-200 hover:decoration-brand"
       >
-        View the dataset
+        {t.evidence.viewDataset}
       </a>
       .
     </p>
@@ -117,9 +117,7 @@ function Row({
 }) {
   return (
     <div className="flex items-baseline justify-between gap-6 py-3">
-      <dt className="shrink-0 text-action font-normal text-ink-soft">
-        {label}
-      </dt>
+      <dt className="shrink-0 text-action text-ink-soft">{label}</dt>
       <dd className="text-right text-action text-ink">{children}</dd>
     </div>
   );

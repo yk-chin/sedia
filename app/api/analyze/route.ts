@@ -7,7 +7,7 @@ import { findBlacklistHit, BLACKLIST_SOURCE } from "@/lib/core/blacklist";
 import { askStructured } from "@/lib/llm/client";
 import {
   PARSE_SYSTEM,
-  EXPLAIN_SYSTEM,
+  explainSystemFor,
   explainUserPrompt,
 } from "@/lib/llm/prompts";
 import { FALLBACK_PARSED, FALLBACK_ANALYSIS } from "@/data/fixtures";
@@ -100,7 +100,7 @@ export async function POST(req: Request) {
 
   // 步骤 3：LLM 只负责把数字讲成人话
   const explain = await askStructured({
-    system: EXPLAIN_SYSTEM,
+    system: explainSystemFor(parsedReq.data.lang),
     user: explainUserPrompt({ score, band: level, contributions }),
     schema: ExplainSchema,
     fallback: FALLBACK_ANALYSIS,

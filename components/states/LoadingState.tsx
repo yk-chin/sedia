@@ -1,12 +1,17 @@
+"use client";
+
+import { useLang } from "@/lib/i18n/context";
+
 /**
  * 骨架屏：形状刻意和 ResultCard 一致（分数块 + 四条分解条 + 正文行）。
  * 结果回来时布局不跳动 —— 这是「贵」和「廉价」的分水岭。
  */
 export function LoadingState() {
+  const { t } = useLang();
   return (
     <div
       role="status"
-      aria-label="Analyzing"
+      aria-label={t.states.loading}
       className="sihat-rise overflow-hidden rounded-[20px] border border-hairline bg-surface shadow-card"
     >
       <div className="p-6 sm:p-9">
