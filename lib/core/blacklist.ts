@@ -51,6 +51,28 @@ export type BlacklistHit = {
 };
 
 /**
+ * 把命中结果整理成界面用的证据对象。
+ * 服务端和浏览器都调这一个函数 —— 保证在线和离线拿到的证据逐字节相同。
+ */
+export function toEvidence(hit: BlacklistHit) {
+  return {
+    product: hit.entry.product,
+    notifNo: hit.entry.notifNo,
+    substances: hit.entry.substances,
+    holder: hit.entry.holder,
+    matchedOn: hit.matchedOn,
+    source: {
+      publisher: BLACKLIST_SOURCE.publisher,
+      cataloguePage: BLACKLIST_SOURCE.cataloguePage,
+      evidencePage: BLACKLIST_SOURCE.evidencePage,
+      licence: BLACKLIST_SOURCE.licence,
+      retrievedAt: BLACKLIST_SOURCE.retrievedAt,
+      count: BLACKLIST_SOURCE.count,
+    },
+  };
+}
+
+/**
  * 在「LLM 抽取的产品名」和「用户原始消息」里找官方撤销记录。
  * 优先用抽取字段（更精确），抽不到才退回全文扫描。
  * 多条命中时取名字最长的那条 —— 最长即最具体。

@@ -6,9 +6,11 @@
    - 其余导航请求走 network-first，网络不通才回落缓存
 
    换版本号即可让旧缓存整体失效。 */
-const CACHE = "sihat-v1";
+const CACHE = "sihat-v2";
 const PRECACHE = [
   "/",
+  "/history",
+  "/settings",
   "/icon.svg",
   "/icon-192.png",
   "/fonts/SourceSans3-Variable-latin.woff2",

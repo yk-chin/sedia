@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Wordmark } from "@/components/Wordmark";
 import { useLang } from "@/lib/i18n/context";
+import { applyTextScale, readPrefs } from "@/lib/prefs";
 import { cn } from "@/lib/utils";
 
 /**
@@ -14,6 +16,23 @@ import { cn } from "@/lib/utils";
 export function AppShell({ children }: { children: React.ReactNode }) {
   const { t } = useLang();
   const path = usePathname();
+  const [offline, setOffline] = useState(false);
+
+  // 挂载后恢复用户的字号偏好（服务端渲染时拿不到 localStorage）
+  useEffect(() => {
+    applyTextScale(readPrefs().textScale);
+  }, []);
+
+  useEffect(() => {
+    const sync = () => setOffline(!navigator.onLine);
+    sync();
+    window.addEventListener("online", sync);
+    window.addEventListener("offline", sync);
+    return () => {
+      window.removeEventListener("online", sync);
+      window.removeEventListener("offline", sync);
+    };
+  }, []);
 
   const tabs = [
     { href: "/", label: t.nav.analyse, icon: IconCheck },
@@ -29,9 +48,19 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <Wordmark />
           </Link>
           <span aria-hidden className="h-3.5 w-px bg-hairline-strong" />
-          <span className="truncate text-meta text-ink-faint">
-            {t.app.descriptor}
-          </span>
+          {offline ? (
+            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-risk-medium-tint px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.06em] text-risk-medium">
+              <span
+                aria-hidden
+                className="h-1.5 w-1.5 rounded-full bg-risk-medium"
+              />
+              {t.offline.badge}
+            </span>
+          ) : (
+            <span className="truncate text-meta text-ink-faint">
+              {t.app.descriptor}
+            </span>
+          )}
 
           {/* 桌面端导航 */}
           <nav className="ml-auto hidden items-center gap-1 sm:flex">

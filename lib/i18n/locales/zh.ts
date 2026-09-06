@@ -113,6 +113,42 @@ export const zh: Dict = {
     privacyHint:
       "无账号，服务器不存任何东西。语言偏好和历史记录都留在这个浏览器里。",
     about: "关于",
+    dataSaver: "省流量模式",
+    dataSaverHint:
+      "完全跳过 AI。只在本地比对官方名单——瞬间返回，不消耗移动数据。",
+    dataSaverOn: "已开启",
+    dataSaverOff: "已关闭",
+    textSize: "字号",
+    textSizeHint: "整个应用的文字都会放大。",
+    sizeNormal: "标准",
+    sizeLarge: "大",
+    sizeLarger: "最大",
+  },
+  offline: {
+    badge: "离线",
+    title: "在你的设备上完成查验",
+    leadOffline:
+      "当前没有网络。以下检查全部在你手机本地完成——不消耗任何流量。",
+    leadSaver:
+      "省流量模式已开启。没有调用 AI 就完成了查验——除了打开页面本身，不消耗流量。",
+    flagsTitle: "这条消息里的危险信号",
+    noFlags: "措辞里没有发现明显的危险信号。",
+    notAScore:
+      "这些是关键词提示，不是危害风险指数。联网后可以得到完整的加权分析和文字解释。",
+    retryOnline: "尝试完整分析",
+  },
+  flagLabels: {
+    stopMedication: "叫你停用处方药",
+    replaceTreatment: "建议用它替代正规治疗",
+    urgency: "催促你立刻照做",
+    vulnerable: "针对长者或慢性病患者",
+    miracleClaim: "使用绝对化承诺（100%、无副作用）",
+    hearsay: "以「听说」的方式转述，没有任何来源",
+  },
+  share: {
+    button: "分享这个结果",
+    copied: "已复制到剪贴板",
+    checkedWith: "由 Sihat 查验",
   },
   chooser: {
     title: "选择你的语言",

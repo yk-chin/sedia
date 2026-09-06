@@ -3,7 +3,11 @@ import { z } from "zod";
 import { AnalyzeRequestSchema, ParsedInputSchema } from "@/lib/types";
 import type { Analysis, Factor, ParsedInput } from "@/lib/types";
 import { weightedScore, band } from "@/lib/core/scoring";
-import { findBlacklistHit, BLACKLIST_SOURCE } from "@/lib/core/blacklist";
+import {
+  findBlacklistHit,
+  toEvidence,
+  BLACKLIST_SOURCE,
+} from "@/lib/core/blacklist";
 import { askStructured } from "@/lib/llm/client";
 import {
   PARSE_SYSTEM,
@@ -124,23 +128,8 @@ export async function POST(req: Request) {
       retrievedAt: BLACKLIST_SOURCE.retrievedAt,
       cataloguePage: BLACKLIST_SOURCE.cataloguePage,
     },
-    evidence: hit
-      ? {
-          product: hit.entry.product,
-          notifNo: hit.entry.notifNo,
-          substances: hit.entry.substances,
-          holder: hit.entry.holder,
-          matchedOn: hit.matchedOn,
-          source: {
-            publisher: BLACKLIST_SOURCE.publisher,
-            cataloguePage: BLACKLIST_SOURCE.cataloguePage,
-            evidencePage: BLACKLIST_SOURCE.evidencePage,
-            licence: BLACKLIST_SOURCE.licence,
-            retrievedAt: BLACKLIST_SOURCE.retrievedAt,
-            count: BLACKLIST_SOURCE.count,
-          },
-        }
-      : null,
+    // 和浏览器端共用同一个构造函数，保证两边证据逐字节一致
+    evidence: hit ? toEvidence(hit) : null,
   };
 
   return NextResponse.json(result);

@@ -44,8 +44,14 @@ export function ResultCard({ data }: { data: Analysis }) {
           {t.result.hri}
         </p>
 
-        <div className="mt-3 flex flex-wrap items-end gap-x-5 gap-y-3">
-          <span className="text-display-sm font-[250] tabular-nums text-ink sm:text-display">
+        {/* 读屏时念的是完整句子；视觉上仍然只有一个大数字。
+            没有这一层，读屏用户只会听到一个孤零零的「76.7」 */}
+        <div
+          className="mt-3 flex flex-wrap items-end gap-x-5 gap-y-3"
+          role="img"
+          aria-label={`${t.result.hri} ${data.score.toFixed(1)} / 100 — ${bandLabel}`}
+        >
+          <span aria-hidden className="text-display-sm font-[250] tabular-nums text-ink sm:text-display">
             {score.toFixed(1)}
           </span>
           <span

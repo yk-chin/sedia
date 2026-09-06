@@ -118,6 +118,42 @@ export const ms: Dict = {
     privacyHint:
       "Tiada akaun, tiada simpanan di pelayan. Pilihan bahasa dan sejarah anda kekal dalam pelayar ini.",
     about: "Mengenai",
+    dataSaver: "Penjimat data",
+    dataSaverHint:
+      "Langkau AI sepenuhnya. Menyemak daftar rasmi pada peranti anda — serta-merta, tanpa guna data mudah alih.",
+    dataSaverOn: "Hidup",
+    dataSaverOff: "Mati",
+    textSize: "Saiz teks",
+    textSizeHint: "Teks lebih besar di seluruh aplikasi.",
+    sizeNormal: "Biasa",
+    sizeLarge: "Besar",
+    sizeLarger: "Paling besar",
+  },
+  offline: {
+    badge: "Luar talian",
+    title: "Disemak pada peranti anda",
+    leadOffline:
+      "Tiada sambungan sekarang. Semakan ini berjalan sepenuhnya pada telefon anda — tiada data digunakan.",
+    leadSaver:
+      "Penjimat data dihidupkan. Disemak tanpa menghubungi AI — tiada data digunakan selain memuatkan halaman.",
+    flagsTitle: "Tanda amaran dalam mesej ini",
+    noFlags: "Tiada tanda amaran yang jelas dalam ayatnya.",
+    notAScore:
+      "Ini amaran kata kunci, bukan Indeks Risiko Bahaya. Sambung ke internet untuk analisis berwajaran penuh dan penjelasan bertulis.",
+    retryOnline: "Cuba analisis penuh",
+  },
+  flagLabels: {
+    stopMedication: "Menyuruh anda berhenti makan ubat preskripsi",
+    replaceTreatment: "Mencadangkan ganti rawatan yang betul",
+    urgency: "Mendesak anda bertindak segera",
+    vulnerable: "Menyasarkan warga emas atau pesakit kronik",
+    miracleClaim: "Dakwaan mutlak (100%, tiada kesan sampingan)",
+    hearsay: "Disampaikan sebagai kata orang, tanpa sumber",
+  },
+  share: {
+    button: "Kongsi keputusan ini",
+    copied: "Disalin ke papan klip",
+    checkedWith: "Disemak dengan Sihat",
   },
   chooser: {
     title: "Pilih bahasa anda",

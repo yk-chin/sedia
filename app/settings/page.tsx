@@ -1,12 +1,32 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n/context";
 import { LANGUAGES, LANG_CODES } from "@/lib/i18n/dictionary";
 import { BLACKLIST_SOURCE } from "@/lib/core/blacklist";
+import {
+  readPrefs,
+  writePrefs,
+  applyTextScale,
+  DEFAULT_PREFS,
+  type Prefs,
+  type TextScale,
+} from "@/lib/prefs";
 import { cn } from "@/lib/utils";
+
+const SIZES: TextScale[] = ["normal", "large", "larger"];
 
 export default function SettingsPage() {
   const { t, lang, setLang } = useLang();
+  const [prefs, setPrefs] = useState<Prefs>(DEFAULT_PREFS);
+
+  useEffect(() => setPrefs(readPrefs()), []);
+
+  function update(next: Prefs) {
+    setPrefs(next);
+    writePrefs(next);
+    applyTextScale(next.textScale);
+  }
 
   return (
     <>
@@ -41,6 +61,77 @@ export default function SettingsPage() {
                   </span>
                 </span>
                 {active ? <Tick /> : null}
+              </button>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* ---- 省流量：完全不碰网络的查验模式 ---- */}
+      <Section title={t.settings.dataSaver} hint={t.settings.dataSaverHint}>
+        <button
+          role="switch"
+          aria-checked={prefs.dataSaver}
+          onClick={() => update({ ...prefs, dataSaver: !prefs.dataSaver })}
+          className={cn(
+            "flex w-full items-center justify-between rounded-[14px] border px-5 py-4 text-left transition-all duration-200 active:scale-[0.99]",
+            prefs.dataSaver
+              ? "border-brand bg-brand-tint"
+              : "border-hairline-strong hover:border-ink"
+          )}
+          style={{ transitionTimingFunction: "var(--ease-standard)" }}
+        >
+          <span className="text-body font-medium text-ink">
+            {prefs.dataSaver
+              ? t.settings.dataSaverOn
+              : t.settings.dataSaverOff}
+          </span>
+          <span
+            aria-hidden
+            className={cn(
+              "relative h-[1.6rem] w-[2.75rem] shrink-0 rounded-full transition-colors duration-200",
+              prefs.dataSaver ? "bg-brand" : "bg-hairline-strong"
+            )}
+          >
+            <span
+              className="absolute top-[0.2rem] h-[1.2rem] w-[1.2rem] rounded-full bg-surface shadow-card transition-[left] duration-200"
+              style={{
+                left: prefs.dataSaver ? "1.35rem" : "0.2rem",
+                transitionTimingFunction: "var(--ease-emphasized)",
+              }}
+            />
+          </span>
+        </button>
+      </Section>
+
+      {/* ---- 字号：字阶是 rem，缩放根字号就能整体等比放大 ---- */}
+      <Section title={t.settings.textSize} hint={t.settings.textSizeHint}>
+        <div className="flex flex-wrap gap-2.5">
+          {SIZES.map((size) => {
+            const active = prefs.textScale === size;
+            const label = {
+              normal: t.settings.sizeNormal,
+              large: t.settings.sizeLarge,
+              larger: t.settings.sizeLarger,
+            }[size];
+            return (
+              <button
+                key={size}
+                aria-pressed={active}
+                onClick={() => update({ ...prefs, textScale: size })}
+                className={cn(
+                  "rounded-full border px-5 py-2.5 font-medium transition-all duration-200 active:scale-[0.98]",
+                  active
+                    ? "border-brand bg-brand-tint text-brand"
+                    : "border-hairline-strong text-ink-soft hover:border-ink hover:text-ink"
+                )}
+                style={{
+                  // 按钮本身用对应尺寸显示，所见即所得
+                  fontSize: `${{ normal: 0.9375, large: 1.05, larger: 1.2 }[size]}rem`,
+                  transitionTimingFunction: "var(--ease-standard)",
+                }}
+              >
+                {label}
               </button>
             );
           })}

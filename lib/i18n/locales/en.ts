@@ -117,6 +117,42 @@ export const en = {
     privacyHint:
       "No account, no server-side storage. Your language choice and history stay in this browser.",
     about: "About",
+    dataSaver: "Data saver",
+    dataSaverHint:
+      "Skip the AI entirely. Checks the official registry on your device — instant, and uses no mobile data.",
+    dataSaverOn: "On",
+    dataSaverOff: "Off",
+    textSize: "Text size",
+    textSizeHint: "Larger text throughout the app.",
+    sizeNormal: "Normal",
+    sizeLarge: "Large",
+    sizeLarger: "Largest",
+  },
+  offline: {
+    badge: "Offline",
+    title: "Checked on your device",
+    leadOffline:
+      "No connection right now. These checks ran entirely on your phone — no data used.",
+    leadSaver:
+      "Data saver is on. Checked without contacting the AI — no data used beyond loading the page.",
+    flagsTitle: "Warning signs in this message",
+    noFlags: "No obvious warning signs in the wording.",
+    notAScore:
+      "These are keyword warnings, not the Harm Risk Index. Connect to get the full weighted analysis and a written explanation.",
+    retryOnline: "Try full analysis",
+  },
+  flagLabels: {
+    stopMedication: "Tells you to stop a prescribed medicine",
+    replaceTreatment: "Suggests replacing proper treatment",
+    urgency: "Pushes you to act immediately",
+    vulnerable: "Aimed at elderly or people with a chronic condition",
+    miracleClaim: "Makes an absolute claim (100%, no side effects)",
+    hearsay: "Passed on as hearsay, with no source",
+  },
+  share: {
+    button: "Share this result",
+    copied: "Copied to clipboard",
+    checkedWith: "Checked with Sihat",
   },
   chooser: {
     title: "Choose your language",

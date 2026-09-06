@@ -7,15 +7,24 @@ import { EmptyState } from "@/components/states/EmptyState";
 import { ErrorState } from "@/components/states/ErrorState";
 import { AiComparison } from "@/components/AiComparison";
 import { EvidenceCard } from "@/components/EvidenceCard";
+import { OfflineResult } from "@/components/OfflineResult";
+import { ShareButton } from "@/components/ShareButton";
 import { DEMO_SEED_INPUTS } from "@/data/fixtures";
+import { findBlacklistHit, toEvidence } from "@/lib/core/blacklist";
+import { findFlags, type FlagKey } from "@/lib/core/flags";
 import { useLang } from "@/lib/i18n/context";
 import { addHistory } from "@/lib/history";
+import { readPrefs } from "@/lib/prefs";
 import { cn } from "@/lib/utils";
 import type { Analysis } from "@/lib/types";
 
-type Status = "idle" | "loading" | "done" | "error";
+type Status = "idle" | "loading" | "done" | "local" | "error";
+type Local = {
+  evidence: Analysis["evidence"];
+  flags: FlagKey[];
+  reason: "offline" | "saver";
+};
 
-/** 和 lib/types.ts 的 AnalyzeRequestSchema 上限保持一致，避免用户打超了才被 400 打回来 */
 const MAX_CHARS = 2000;
 
 export default function Home() {
@@ -23,12 +32,10 @@ export default function Home() {
   const [text, setText] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [data, setData] = useState<Analysis | null>(null);
+  const [local, setLocal] = useState<Local | null>(null);
   const [error, setError] = useState("");
-  // 默认 Ctrl（Windows / Linux），挂载后才判断是不是 Mac —— 避免 SSR 水合不一致
   const [modKey, setModKey] = useState("Ctrl");
   const [showCompare, setShowCompare] = useState(false);
-  /** 送去分析的那条消息。对照屏要拿它去实时问 AI，
-      不能用 text —— 用户可能在出结果之后又改了输入框 */
   const [analysed, setAnalysed] = useState("");
   const boxRef = useRef<HTMLTextAreaElement>(null);
 
@@ -36,7 +43,6 @@ export default function Home() {
     if (/Mac|iPhone|iPad/.test(navigator.userAgent)) setModKey("⌘");
   }, []);
 
-  // 输入框跟着内容长高，长消息不会被截断（上限 320px，之后内部滚动）
   useEffect(() => {
     const el = boxRef.current;
     if (!el) return;
@@ -47,11 +53,32 @@ export default function Home() {
 
   const busy = status === "loading";
 
-  async function run(input: string) {
+  async function run(input: string, forceOnline = false) {
     if (!input.trim()) return;
-    setStatus("loading");
     setError("");
     setShowCompare(false);
+    setAnalysed(input);
+
+    /* 第一步永远在本地跑：查官方名单 + 关键词标记。
+       纯函数、零网络、几十毫秒。断网时这就是全部结果，
+       在线时它让证据卡在 AI 还在想的时候就已经显示出来。 */
+    const hit = findBlacklistHit(input);
+    const evidence = hit ? toEvidence(hit) : null;
+    const flags = findFlags(input);
+
+    const saver = readPrefs().dataSaver && !forceOnline;
+    const offline = typeof navigator !== "undefined" && !navigator.onLine;
+
+    if (saver || offline) {
+      setLocal({ evidence, flags, reason: saver ? "saver" : "offline" });
+      setStatus("local");
+      return;
+    }
+
+    /* 在线路径也保留本地结果：官方记录在几十毫秒内就查完了，
+       没道理让它陪着 AI 一起等十几秒。加载时先把证据卡显示出来。 */
+    setLocal({ evidence, flags, reason: "offline" });
+    setStatus("loading");
     try {
       const res = await fetch("/api/analyze", {
         method: "POST",
@@ -61,13 +88,30 @@ export default function Home() {
       if (!res.ok) throw new Error(`Server returned ${res.status}`);
       const parsed = (await res.json()) as Analysis;
       setData(parsed);
-      setAnalysed(input);
       setStatus("done");
       addHistory(input, parsed);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Unknown error");
-      setStatus("error");
+    } catch {
+      // 网络在中途断了，或服务端挂了：不报错，回落到本地结果
+      setLocal({ evidence, flags, reason: "offline" });
+      setStatus("local");
     }
+  }
+
+  const shareText = buildShareText();
+  function buildShareText(): string {
+    const ev = data?.evidence ?? local?.evidence;
+    const lines: string[] = [];
+    if (ev) {
+      lines.push(`${t.evidence.found}: ${ev.product}`);
+      lines.push(`${t.evidence.substance}: ${ev.substances.join(", ")}`);
+      lines.push(`${t.evidence.notifNo}: ${ev.notifNo}`);
+      lines.push(ev.source.cataloguePage);
+    } else if (data) {
+      lines.push(`${t.result.hri}: ${data.score} / 100`);
+      lines.push(data.headline);
+    }
+    lines.push(`— ${t.share.checkedWith}`);
+    return lines.join("\n");
   }
 
   return (
@@ -161,17 +205,46 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-8">
+      {/* 结果区加 aria-live：读屏用户不必自己去找结果出现在哪 */}
+      <section className="mt-8" aria-live="polite" aria-atomic="false">
         {status === "idle" && (
           <EmptyState title={t.states.emptyTitle} hint={t.states.emptyHint} />
         )}
-        {status === "loading" && <LoadingState />}
+        {status === "loading" && (
+          <>
+            {/* 官方记录不用等 AI —— 它已经查好了 */}
+            {local?.evidence ? (
+              <div className="mb-6">
+                <EvidenceCard evidence={local.evidence} />
+              </div>
+            ) : null}
+            <LoadingState />
+          </>
+        )}
         {status === "error" && (
           <ErrorState message={error} onRetry={() => void run(text)} />
         )}
+
+        {status === "local" && local && (
+          <>
+            {local.evidence ? (
+              <div className="mb-6">
+                <EvidenceCard evidence={local.evidence} />
+              </div>
+            ) : null}
+            <OfflineResult
+              flags={local.flags}
+              reason={local.reason}
+              onRetry={() => void run(analysed, true)}
+            />
+            <div className="mt-6">
+              <ShareButton text={shareText} />
+            </div>
+          </>
+        )}
+
         {status === "done" && data && (
           <>
-            {/* 官方记录命中时排在分数前面 —— 查到的记录是确定的，分数是估算的 */}
             {data.evidence ? (
               <div className="mb-6">
                 <EvidenceCard evidence={data.evidence} />
@@ -179,6 +252,10 @@ export default function Home() {
             ) : null}
 
             <ResultCard data={data} />
+
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              <ShareButton text={shareText} />
+            </div>
 
             {!showCompare && (
               <button
