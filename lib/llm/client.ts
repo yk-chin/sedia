@@ -16,7 +16,7 @@ const MAX_RETRY = 1;
 /** 现场救命开关：Vercel 环境变量改成 true 后 redeploy，全部 LLM 调用走预置结果 */
 export const SAFE_MODE = process.env.DEMO_SAFE_MODE === "true";
 
-const MODEL = process.env.GEMINI_MODEL ?? "gemini-3.6-flash";
+export const MODEL = process.env.GEMINI_MODEL ?? "gemini-3.6-flash";
 const ENDPOINT = (model: string) =>
   `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 
@@ -47,7 +47,7 @@ async function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
 }
 
 async function callGeminiRaw(
-  systemInstruction: string,
+  systemInstruction: string | null,
   userText: string
 ): Promise<string> {
   const key = process.env.GEMINI_API_KEY;
@@ -57,11 +57,15 @@ async function callGeminiRaw(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      systemInstruction: { parts: [{ text: systemInstruction }] },
+      // systemInstruction = null 表示「像普通人那样直接问」，
+      // 对照屏要的就是这种没有任何提示词加持的原始回答
+      ...(systemInstruction
+        ? { systemInstruction: { parts: [{ text: systemInstruction }] } }
+        : {}),
       contents: [{ role: "user", parts: [{ text: userText }] }],
       generationConfig: {
         temperature: 0.2,
-        responseMimeType: "application/json",
+        ...(systemInstruction ? { responseMimeType: "application/json" } : {}),
       },
     }),
   });
@@ -83,6 +87,44 @@ async function callGeminiRaw(
   const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
   if (!text) throw new LlmUnavailable("空响应");
   return text;
+}
+
+/**
+ * 无提示词的原始提问：不给 system prompt，拿回一段自由文本。
+ * 只给对照屏用 —— 我们要展示的就是「普通人直接问通用聊天机器人」会得到什么。
+ *
+ * 这里没有 zod 校验，因为压根没有结构可校验；
+ * 其余三道保险（SAFE_MODE / 15 秒超时 / 重试策略 / fallback）和 askStructured 完全一致。
+ */
+export async function askText(args: {
+  user: string;
+  fallback: string;
+  /* 对照屏可以给更长的预算：它是用户主动点开的、有骨架屏、不挡主流程。
+     没有 system prompt 的自由回答动辄两三千字，15 秒经常不够。
+     主分析流程仍然用 TIMEOUT_MS，那条路径才是演示的命脉。 */
+  timeoutMs?: number;
+}): Promise<{ text: string; live: boolean; reason?: string }> {
+  if (SAFE_MODE) {
+    return { text: args.fallback, live: false, reason: "SAFE_MODE" };
+  }
+
+  let lastReason = "unknown";
+  for (let attempt = 0; attempt <= MAX_RETRY; attempt++) {
+    try {
+      const raw = await withTimeout(
+        callGeminiRaw(null, args.user),
+        args.timeoutMs ?? TIMEOUT_MS
+      );
+      const text = raw.trim();
+      if (text) return { text, live: true };
+      lastReason = "空响应";
+    } catch (e) {
+      lastReason = e instanceof Error ? e.message : String(e);
+      if (e instanceof LlmUnavailable && !e.retryable) break;
+    }
+  }
+  console.warn("[llm] 对照屏降级到预置回答:", lastReason);
+  return { text: args.fallback, live: false, reason: lastReason };
 }
 
 /**

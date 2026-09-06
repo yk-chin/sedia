@@ -75,6 +75,12 @@ export const ms: Dict = {
     lede: "Hanya satu daripadanya boleh tunjukkan sebabnya — dan beri jawapan yang sama dua kali.",
     chatbot: "Chatbot AI umum",
     captured: "dirakam",
+    asking: "Bertanya kepada chatbot umum dengan mesej yang sama…",
+    askedNow: "baru ditanya",
+    askFailed: "Tidak dapat menghubungi chatbot buat masa ini.",
+    askRetry: "Tanya semula",
+    offlineNote:
+      "Panggilan langsung tidak tersedia, jadi ini jawapan yang dirakam sebelum ini untuk mesej lain — bukan jawapan kepada mesej anda.",
     live: "analisis ini, langsung",
     riskScore: "Skor risiko",
     auditable: "Faktor boleh audit",

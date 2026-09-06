@@ -71,6 +71,12 @@ export const zh: Dict = {
     lede: "但只有一边能告诉你为什么——并且第二次问还给你同样的答案。",
     chatbot: "通用 AI 聊天机器人",
     captured: "捕获于",
+    asking: "正在把同一条消息问通用聊天机器人…",
+    askedNow: "刚刚问的",
+    askFailed: "暂时联系不上聊天机器人。",
+    askRetry: "再问一次",
+    offlineNote:
+      "实时调用不可用，所以这是之前针对另一条消息捕获的回答——不是对你这条的回答。",
     live: "本次分析，实时",
     riskScore: "风险分数",
     auditable: "可审计因子",

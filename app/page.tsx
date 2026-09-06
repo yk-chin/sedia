@@ -27,6 +27,9 @@ export default function Home() {
   // 默认 Ctrl（Windows / Linux），挂载后才判断是不是 Mac —— 避免 SSR 水合不一致
   const [modKey, setModKey] = useState("Ctrl");
   const [showCompare, setShowCompare] = useState(false);
+  /** 送去分析的那条消息。对照屏要拿它去实时问 AI，
+      不能用 text —— 用户可能在出结果之后又改了输入框 */
+  const [analysed, setAnalysed] = useState("");
   const boxRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -58,6 +61,7 @@ export default function Home() {
       if (!res.ok) throw new Error(`Server returned ${res.status}`);
       const parsed = (await res.json()) as Analysis;
       setData(parsed);
+      setAnalysed(input);
       setStatus("done");
       addHistory(input, parsed);
     } catch (e) {
@@ -194,7 +198,7 @@ export default function Home() {
               </button>
             )}
 
-            {showCompare && <AiComparison data={data} />}
+            {showCompare && <AiComparison data={data} message={analysed} />}
           </>
         )}
       </section>

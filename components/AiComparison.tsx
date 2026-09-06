@@ -1,7 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { Analysis } from "@/lib/types";
-import { GENERIC_AI_ANSWER } from "@/data/fixtures";
 import { useLang } from "@/lib/i18n/context";
 import type { Dict } from "@/lib/i18n/dictionary";
 
@@ -23,10 +23,51 @@ function labelFor(t: Dict, key: string, fallback: string): string {
  * 讲的是：它这次对了，但它给不出数字、给不出可指认的依据、
  * 每问一次措辞都不一样，所以你没有办法知道它下次什么时候会错。
  */
-export function AiComparison({ data }: { data: Analysis }) {
-  const { t } = useLang();
-  const answer = stripMarkdown(GENERIC_AI_ANSWER.text);
+type Asked = {
+  answer: string;
+  model: string;
+  /** live = 真的问到了这一条；safe = SAFE_MODE 预置；failed = 没问到 */
+  mode: "live" | "safe" | "failed";
+  capturedOn: string | null;
+};
+
+export function AiComparison({
+  data,
+  message,
+}: {
+  data: Analysis;
+  message: string;
+}) {
+  const { t, lang } = useLang();
+  const [asked, setAsked] = useState<Asked | null>(null);
   const top = [...data.contributions].sort((a, b) => b.points - a.points)[0];
+
+  /* 实时去问 —— 界面写着「问了同一条消息」，那就必须真的问这一条。
+     组件是点开对照屏才挂载的，所以这个请求不会拖慢主流程。 */
+  const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    setAsked(null);
+    fetch("/api/ask-ai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: message, lang }),
+    })
+      .then((r) => r.json())
+      .then((d: Asked) => {
+        if (!cancelled) setAsked(d);
+      })
+      .catch(() => {
+        if (!cancelled)
+          setAsked({ answer: "", model: "", mode: "failed", capturedOn: null });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [message, lang, attempt]);
+
+  const answer = asked ? stripMarkdown(asked.answer) : "";
 
   return (
     <section className="sihat-rise mt-8 overflow-hidden rounded-[20px] border border-hairline bg-surface shadow-card">
@@ -47,13 +88,49 @@ export function AiComparison({ data }: { data: Analysis }) {
               {t.compare.chatbot}
             </h3>
             <span className="shrink-0 text-[0.6875rem] text-ink-faint">
-              {t.compare.captured} {GENERIC_AI_ANSWER.capturedOn}
+              {asked === null
+                ? "…"
+                : asked.mode === "live"
+                  ? t.compare.askedNow
+                  : asked.mode === "safe"
+                    ? `${t.compare.captured} ${asked.capturedOn ?? ""}`
+                    : ""}
             </span>
           </div>
 
-          <p className="mt-4 max-h-56 overflow-y-auto whitespace-pre-wrap rounded-[12px] bg-sunken p-4 text-meta leading-relaxed text-ink-soft">
-            {answer}
-          </p>
+          {asked === null ? (
+            <div
+              role="status"
+              aria-label={t.compare.asking}
+              className="mt-4 space-y-2.5 rounded-[12px] bg-sunken p-4"
+            >
+              {[100, 92, 97, 78].map((w, i) => (
+                <div
+                  key={i}
+                  className="sihat-shimmer h-3 rounded-full"
+                  style={{ width: `${w}%` }}
+                />
+              ))}
+              <p className="pt-1 text-meta text-ink-faint">{t.compare.asking}</p>
+            </div>
+          ) : asked.mode === "failed" ? (
+            /* 调用失败时**不**摆出那段针对别的消息的预置回答 ——
+               那正是「怎么问什么都一样」的来源 */
+            <div className="mt-4 rounded-[12px] border border-dashed border-hairline-strong bg-sunken/60 p-5 text-center">
+              <p className="text-meta text-ink-soft">{t.compare.askFailed}</p>
+              <button
+                onClick={() => setAttempt((n) => n + 1)}
+                className="mt-3 rounded-full border border-hairline-strong px-4 py-1.5 text-meta text-ink-soft transition-colors duration-200 hover:border-ink hover:text-ink"
+                style={{ transitionTimingFunction: "var(--ease-standard)" }}
+              >
+                {t.compare.askRetry}
+              </button>
+            </div>
+          ) : (
+            <p className="mt-4 max-h-56 overflow-y-auto whitespace-pre-wrap rounded-[12px] bg-sunken p-4 text-meta leading-relaxed text-ink-soft">
+              {answer}
+            </p>
+          )}
 
           <dl className="mt-5 space-y-2.5">
             <Stat label={t.compare.riskScore} value={t.compare.none} />
@@ -61,13 +138,27 @@ export function AiComparison({ data }: { data: Analysis }) {
             <Stat label={t.compare.twice} value={t.compare.notGuaranteed} warn />
             <Stat
               label={t.compare.length}
-              value={`${answer.length.toLocaleString()} ${t.compare.characters}`}
+              value={
+                asked === null
+                  ? "…"
+                  : asked.mode === "failed"
+                    ? "—"
+                    : `${answer.length.toLocaleString()} ${t.compare.characters}`
+              }
             />
           </dl>
 
-          <p className="mt-4 text-meta text-ink-faint">
-            {GENERIC_AI_ANSWER.model} · {t.compare.chatbotNote}
-          </p>
+          {asked !== null && asked.mode !== "failed" ? (
+            <p className="mt-4 text-meta text-ink-faint">
+              {asked.mode === "live" ? (
+                <>
+                  {asked.model} · {t.compare.chatbotNote}
+                </>
+              ) : (
+                t.compare.offlineNote
+              )}
+            </p>
+          ) : null}
         </div>
 
         {/* ---- 右：SIHAT（本次真实结果） ---- */}

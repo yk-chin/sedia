@@ -74,6 +74,12 @@ export const en = {
     lede: "Only one of them can show you why — and give you the same answer twice.",
     chatbot: "A general AI chatbot",
     captured: "captured",
+    asking: "Asking a general chatbot the same message…",
+    askedNow: "asked just now",
+    askFailed: "Could not reach the chatbot just now.",
+    askRetry: "Ask again",
+    offlineNote:
+      "Live call unavailable, so this is a previously captured answer to a different message — not a reply to yours.",
     live: "this analysis, live",
     riskScore: "Risk score",
     auditable: "Auditable factors",
