@@ -75,13 +75,9 @@ export function ResultCard({ data }: { data: Analysis }) {
         {/* ---- 分解 ---- */}
         <div className="mt-9">
           <HriBreakdown contributions={data.contributions} band={data.band} />
-          {!data.evidence ? (
+          {data.evidence.length === 0 ? (
             <div className="mt-5 border-t border-hairline pt-5">
-              <NoEvidenceNote
-                count={data.registry.count}
-                retrievedAt={data.registry.retrievedAt}
-                cataloguePage={data.registry.cataloguePage}
-              />
+              <NoEvidenceNote registries={data.registries} />
             </div>
           ) : null}
         </div>

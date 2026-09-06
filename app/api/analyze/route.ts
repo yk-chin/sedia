@@ -4,10 +4,11 @@ import { AnalyzeRequestSchema, ParsedInputSchema } from "@/lib/types";
 import type { Analysis, Factor, ParsedInput } from "@/lib/types";
 import { weightedScore, band } from "@/lib/core/scoring";
 import {
-  findBlacklistHit,
+  findHits,
   toEvidence,
-  BLACKLIST_SOURCE,
-} from "@/lib/core/blacklist";
+  loadFdaRegistry,
+  MY_REGISTRIES,
+} from "@/lib/core/registry";
 import { askStructured } from "@/lib/llm/client";
 import {
   PARSE_SYSTEM,
@@ -87,7 +88,8 @@ export async function POST(req: Request) {
   /* 步骤 0：查官方撤销名单 —— 确定性查表，完全不经过 LLM。
      刻意放在 LLM 之前、且不受 DEMO_SAFE_MODE 影响：
      哪怕 Gemini 整个挂掉，这条证据链照样成立。 */
-  const hit = findBlacklistHit(parsedReq.data.text);
+  const registries = [...MY_REGISTRIES, await loadFdaRegistry()];
+  const hits = findHits(parsedReq.data.text, registries);
 
   // 步骤 1：LLM 解析（失败自动降级到 fixtures）
   const parse = await askStructured({
@@ -123,13 +125,16 @@ export async function POST(req: Request) {
     explanation: explain.data.explanation,
     actions: explain.data.actions,
     degraded: parse.degraded || explain.degraded,
-    registry: {
-      count: BLACKLIST_SOURCE.count,
-      retrievedAt: BLACKLIST_SOURCE.retrievedAt,
-      cataloguePage: BLACKLIST_SOURCE.cataloguePage,
-    },
+    registries: registries.map((r) => ({
+      id: r.source.id,
+      name: r.source.name,
+      jurisdiction: r.source.jurisdiction,
+      count: r.source.count,
+      retrievedAt: r.source.retrievedAt,
+      cataloguePage: r.source.cataloguePage,
+    })),
     // 和浏览器端共用同一个构造函数，保证两边证据逐字节一致
-    evidence: hit ? toEvidence(hit) : null,
+    evidence: hits.map(toEvidence),
   };
 
   return NextResponse.json(result);

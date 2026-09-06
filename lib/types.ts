@@ -55,6 +55,30 @@ export const ParsedInputSchema = z.object({
 });
 export type ParsedInput = z.infer<typeof ParsedInputSchema>;
 
+/** 一条官方记录命中。source.authority 区分「法律裁定」和「他国佐证」 */
+export const EvidenceSchema = z.object({
+  product: z.string(),
+  notifNo: z.string(),
+  substances: z.array(z.string()),
+  holder: z.string(),
+  matchedOn: z.enum(["product_name", "message"]),
+  /** 只有 FDA 有逐产品官方页面；null 表示只能链到名单页，不许伪造 */
+  permalink: z.string().nullable(),
+  source: z.object({
+    id: z.string(),
+    name: z.string(),
+    publisher: z.string(),
+    jurisdiction: z.enum(["MY", "US"]),
+    authority: z.enum(["primary", "reference"]),
+    cataloguePage: z.string(),
+    evidencePage: z.string(),
+    licence: z.string(),
+    retrievedAt: z.string(),
+    count: z.number(),
+  }),
+});
+export type Evidence = z.infer<typeof EvidenceSchema>;
+
 /** 最终返回给前端的分析结果 */
 export const AnalysisSchema = z.object({
   headline: z.string().min(1),
@@ -75,34 +99,24 @@ export const AnalysisSchema = z.object({
   actions: z.array(z.string()),
   /** 是否走了降级路径 */
   degraded: z.boolean(),
-  /** 查询过的官方名单本身的信息 —— 无论命中与否都要带上，
+  /** 查询过的每一份官方名单 —— 无论命中与否都要带上，
       因为「查过了，没查到」也是一条需要出处的结论 */
-  registry: z.object({
-    count: z.number(),
-    retrievedAt: z.string(),
-    cataloguePage: z.string(),
-  }),
-  /** 官方撤销记录命中。null = 没查到，不等于安全。
-      这一块完全不经过 LLM，是 lib/core/blacklist.ts 查表查出来的，
-      每一条都能追回 NPRA 的公开记录 —— 这是「可点击的证据」。
-      刻意与 HRI 正交：verdict 回答「这话对不对」，HRI 回答「照做会不会出事」。 */
-  evidence: z
-    .object({
-      product: z.string(),
-      notifNo: z.string(),
-      substances: z.array(z.string()),
-      holder: z.string(),
-      matchedOn: z.enum(["product_name", "message"]),
-      source: z.object({
-        publisher: z.string(),
-        cataloguePage: z.string(),
-        evidencePage: z.string(),
-        licence: z.string(),
-        retrievedAt: z.string(),
-        count: z.number(),
-      }),
+  registries: z.array(
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      jurisdiction: z.enum(["MY", "US"]),
+      count: z.number(),
+      retrievedAt: z.string(),
+      cataloguePage: z.string(),
     })
-    .nullable(),
+  ),
+  /** 官方记录命中，可能同时命中多份名单。空数组 = 没查到，**不等于安全**。
+      这一块完全不经过 LLM，是 lib/core/registry.ts 查表查出来的，
+      每一条都能追回官方公开记录 —— 这是「可点击的证据」。
+      刻意与 HRI 正交：命中回答「这东西是不是被官方点名了」，HRI 回答「照做会不会出事」。
+      排序：马来西亚的权威裁定在前，美国 FDA 的佐证在后。 */
+  evidence: z.array(EvidenceSchema),
 });
 export type Analysis = z.infer<typeof AnalysisSchema>;
 

@@ -31,7 +31,7 @@ export const FALLBACK_PARSED: ParsedInput = {
 
 export const FALLBACK_ANALYSIS: Omit<
   Analysis,
-  "score" | "band" | "contributions" | "degraded" | "evidence" | "registry"
+  "score" | "band" | "contributions" | "degraded" | "evidence" | "registries"
 > = {
   headline: "High risk: do not act on this message",
   explanation:

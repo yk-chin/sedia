@@ -1,0 +1,818 @@
+{
+  "source": {
+    "id": "moh-banned",
+    "name": "Senarai Produk Yang Diharamkan",
+    "publisher": "Pharmacy Enforcement Division, Ministry of Health Malaysia (KKM)",
+    "jurisdiction": "MY",
+    "authority": "primary",
+    "cataloguePage": "https://pharmacy.moh.gov.my/ms/apps/banned-product",
+    "evidencePage": "https://pharmacy.moh.gov.my/ms/apps/banned-product",
+    "hasPerItemLink": false,
+    "licence": "© Ministry of Health Malaysia",
+    "coverage": "Products banned in Malaysia after being found to contain scheduled poisons.",
+    "retrievedAt": "2026-09-06",
+    "count": 99
+  },
+  "entries": [
+    {
+      "product": "Sparkle Twins",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Vaniessa May",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Jamu Tok",
+      "substances": [
+        "SIBUTRAMINE"
+      ],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Artercardy Essence",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Du Zhong Ba Ji Wan",
+      "substances": [
+        "CHLORPHENIRAMINE",
+        "FRUSEMIDE"
+      ],
+      "status": "Bukan Keluaran Berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "ATC Herbs",
+      "substances": [
+        "DEXAMETHASONE",
+        "IBUPROFEN",
+        "CHLORPHENIRAMINE",
+        "CLARITHROMYCIN",
+        "TETRACYCLINE",
+        "LOVASTATIN"
+      ],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Ginseng Kianpi Pill",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Tou Gubao Pil Reumatisme",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Niao Suan Wan Pil Urik Asid",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Tian Ma Tu Chung Seven Leaves Ginseng",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Qu Fe Su Wei Lin Dan",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Tong Mai Dan",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Jiang Chun Yi Suan Wan",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Ke Ong",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Samyun Wan 20 Capsule",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "High Strength Samyun Wan 20 Capsule",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Gambir Emas Performance Gel dengan Estrak Ginseng",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Gambir Emas Performance Gel",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "G.E Herbs Performance Oil",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Kama-Max Performance Spray",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Kama-Max Booster with Extract Ginseng",
+      "substances": [
+        "SILDENAFIL"
+      ],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Tablet Resdung Tok Melah",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Green Life Aloe-Greens",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Mama Don't Worry",
+      "substances": [],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Seahorse Chop Du Zhong Ba Ji Wan",
+      "substances": [
+        "DEXAMETHASONE",
+        "CHLORPHENIRAMINE",
+        "FRUSEMIDE"
+      ],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "Skinny Lolita",
+      "substances": [
+        "SIBUTRAMINE"
+      ],
+      "status": "Bukan keluaran berdaftar",
+      "year": "-"
+    },
+    {
+      "product": "NP BEAUTY FM CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "NP BEAUTY FB CREAM - 7g",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "AS'S BEAUTY NIGHT CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "LS REPAIRING CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "LUFFIYA TREATMENT FOUNDATION",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "PUTERI RATU TREATMENT CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "FLASHH TREATMENT CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "FLASHH NIGHT CREAM",
+      "substances": [
+        "HYDROQUINONE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "BIELA BEAUTY GLOWING NIGHT CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "BL SKINCARE DAY CREAM 1",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "BL SKINCARE DAY CREAM 2",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "BL SKINCARE NIGHT CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "Night Cream ForU By D Ains Beauty Empire",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "Karisma Birds Nest Gel",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "Haemun Cream",
+      "substances": [
+        "MICONAZOLE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "Sweet 13 Skincare Treatment Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "Ninaskincare Skin Puteh Moisturizer",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "Skin Dessert Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2022"
+    },
+    {
+      "product": "Flashhskinzz Night Cream",
+      "substances": [
+        "HYDROQUINONE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Rissa Skin Moisturiser",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Karisma Turmeric Booster Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Flashhskinzz Treatment Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Flashhskinzz Moist Sunscreen",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Serene Treatment Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Tempias Hawa Master Recovery Skin RSkin",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Karisma Preventing Day Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "SL Two Kunyit",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "SL Two Sarang Burung",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Clemira Care Cream",
+      "substances": [
+        "MICONAZOLE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Armila Beauty Kak ELL Pigment Booster",
+      "substances": [
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Airee Beautycare Night Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "BL Ledehh Day Cream 1",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "BL Ledehh Day Cream 2",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "BL Ledehh Night Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "For U Night Cream - 15g",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Beaute Treatment Cream",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Beaute Nite Cream",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Skinsister Babyskin Treatment Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Sahaana Fairness Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Skinmade AZ & Salicylic Acid + Licorice Root Serum",
+      "substances": [
+        "ASID AZELAIK"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Glowing Night Cream",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Glowing Herba Night Cream",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Bestie Moisturizer Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Abyra Seaweed Skin Care- Seaweed Cell Renewal Night Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Gerbera Beauty - Treatment & Repairing Night Cream",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Gerbera Beauty - Whitening Night Cream",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2023"
+    },
+    {
+      "product": "Toner Treatment EWSB",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "N Glow EWSB",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "Glory Cosmetics Facecream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "ZMY Magnetic Aura Night Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "N GLOWING EWSB",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "Karisma Golden Turmeric Cream",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "SL Two Intensive",
+      "substances": [
+        "HYDROQUINONE",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "Ailas Wild Rose Petal Face Cream",
+      "substances": [
+        "TRETINOIN",
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "Desha Night Cream (Moisturizer)",
+      "substances": [
+        "TRETINOIN",
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "GB Night Cream Treatment",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "GB Herbal Cream Treatment",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "Aniqa Night Cream",
+      "substances": [
+        "TRETINOIN"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2024"
+    },
+    {
+      "product": "JLFARA SEAWEED",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "Molly Care Night Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "Pinkkiss Beauty Care Herbal Cream",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "Pinkkiss Beauty Care Treatment Cream",
+      "substances": [
+        "HYDROQUINONE",
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "Karisma Brightening Day Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "Ufora Advance Repair Solution",
+      "substances": [
+        "HYDROQUINONE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "HEBE - MICRO RESCUE CREAM (REDUCE ACNE SCAR)",
+      "substances": [
+        "CLINDAMYCIN",
+        "METRONIDAZOLE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "CLOROC REJU CREAM",
+      "substances": [
+        "TRETINOIN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "SERI AYU SECRET -RADIANT REPAIR CREAM",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "JC BEAUTY CULTURE RADIANCE RENEWAL SERUM",
+      "substances": [
+        "HIDROKUINON",
+        "TRETINOIN"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "THE PERFECT DERMA CREAM",
+      "substances": [
+        "MICONAZOLE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2025"
+    },
+    {
+      "product": "CHANG-SZE-LONG BADU GAO",
+      "substances": [
+        "PARAS MERKURI MELEBIHI HAD DIBENARKAN"
+      ],
+      "status": "Bukan Keluaran Berdaftar",
+      "year": "2025"
+    },
+    {
+      "product": "Saqa Glowing Turmeric Night Treatment Cream",
+      "substances": [
+        "MERKURI"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2026"
+    },
+    {
+      "product": "Glowing Night Treatment",
+      "substances": [
+        "HYDROKUINON",
+        "TRETINOIN DAN",
+        "BETAMETHASONE 17-VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2026"
+    },
+    {
+      "product": "Glowing Herbal Treatment",
+      "substances": [
+        "MERKURI",
+        "BETAMETHASONE 17-",
+        "VALERATE"
+      ],
+      "status": "Kosmetik tidak bernotifikasi",
+      "year": "2026"
+    }
+  ]
+}

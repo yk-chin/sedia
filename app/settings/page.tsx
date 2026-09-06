@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n/context";
 import { LANGUAGES, LANG_CODES } from "@/lib/i18n/dictionary";
-import { BLACKLIST_SOURCE } from "@/lib/core/blacklist";
+import { MY_REGISTRIES } from "@/lib/core/registry";
 import {
   readPrefs,
   writePrefs,
@@ -140,19 +140,31 @@ export default function SettingsPage() {
 
       {/* ---- 数据来源：证据链在这里也要能点开 ---- */}
       <Section title={t.settings.data} hint={t.settings.dataHint}>
-        <dl className="rounded-[14px] border border-hairline bg-surface">
-          <Row label="Registry">{BLACKLIST_SOURCE.name}</Row>
-          <Row label="Publisher">{BLACKLIST_SOURCE.publisher}</Row>
-          <Row label="Records">{BLACKLIST_SOURCE.count}</Row>
-          <Row label="Retrieved">{BLACKLIST_SOURCE.retrievedAt}</Row>
-          <Row label="Licence">{BLACKLIST_SOURCE.licence}</Row>
-        </dl>
-        <div className="mt-3 flex flex-col gap-2">
-          <ExtLink href={BLACKLIST_SOURCE.cataloguePage}>
-            {t.evidence.datasetLink}
-          </ExtLink>
-          <ExtLink href={BLACKLIST_SOURCE.evidencePage}>
-            {t.evidence.npraLink}
+        <div className="flex flex-col gap-4">
+          {MY_REGISTRIES.map((r) => (
+            <dl
+              key={r.source.id}
+              className="rounded-[14px] border border-hairline bg-surface"
+            >
+              <Row label="Registry">{r.source.name}</Row>
+              <Row label="Publisher">{r.source.publisher}</Row>
+              <Row label="Jurisdiction">
+                {r.source.jurisdiction === "MY" ? "🇲🇾 Malaysia" : "🇺🇸 US"}
+              </Row>
+              <Row label="Records">{r.source.count}</Row>
+              <Row label="Retrieved">{r.source.retrievedAt}</Row>
+              <Row label="Licence">{r.source.licence}</Row>
+            </dl>
+          ))}
+        </div>
+        <div className="mt-4 flex flex-col gap-2">
+          {MY_REGISTRIES.map((r) => (
+            <ExtLink key={r.source.id} href={r.source.cataloguePage}>
+              {r.source.name}
+            </ExtLink>
+          ))}
+          <ExtLink href="https://www.fda.gov/consumers/health-fraud-scams/health-fraud-product-database">
+            US FDA Health Fraud Product Database
           </ExtLink>
         </div>
       </Section>

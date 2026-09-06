@@ -10,7 +10,7 @@ import { EvidenceCard } from "@/components/EvidenceCard";
 import { OfflineResult } from "@/components/OfflineResult";
 import { ShareButton } from "@/components/ShareButton";
 import { DEMO_SEED_INPUTS } from "@/data/fixtures";
-import { findBlacklistHit, toEvidence } from "@/lib/core/blacklist";
+import { findHits, toEvidence, loadFdaRegistry, MY_REGISTRIES } from "@/lib/core/registry";
 import { findFlags, type FlagKey } from "@/lib/core/flags";
 import { useLang } from "@/lib/i18n/context";
 import { addHistory } from "@/lib/history";
@@ -21,6 +21,7 @@ import type { Analysis } from "@/lib/types";
 type Status = "idle" | "loading" | "done" | "local" | "error";
 type Local = {
   evidence: Analysis["evidence"];
+  registries: Analysis["registries"];
   flags: FlagKey[];
   reason: "offline" | "saver";
 };
@@ -62,22 +63,36 @@ export default function Home() {
     /* 第一步永远在本地跑：查官方名单 + 关键词标记。
        纯函数、零网络、几十毫秒。断网时这就是全部结果，
        在线时它让证据卡在 AI 还在想的时候就已经显示出来。 */
-    const hit = findBlacklistHit(input);
-    const evidence = hit ? toEvidence(hit) : null;
+    // 马来西亚两份名单已静态打包；FDA 那份 42KB，按需加载后由 SW 缓存
+    const registries = [...MY_REGISTRIES];
+    try {
+      registries.push(await loadFdaRegistry());
+    } catch {
+      // 加载不到 FDA 索引就只用本地两份，不影响主流程
+    }
+    const evidence = findHits(input, registries).map(toEvidence);
     const flags = findFlags(input);
+    const registryMeta = registries.map((r) => ({
+      id: r.source.id,
+      name: r.source.name,
+      jurisdiction: r.source.jurisdiction,
+      count: r.source.count,
+      retrievedAt: r.source.retrievedAt,
+      cataloguePage: r.source.cataloguePage,
+    }));
 
     const saver = readPrefs().dataSaver && !forceOnline;
     const offline = typeof navigator !== "undefined" && !navigator.onLine;
 
     if (saver || offline) {
-      setLocal({ evidence, flags, reason: saver ? "saver" : "offline" });
+      setLocal({ evidence, registries: registryMeta, flags, reason: saver ? "saver" : "offline" });
       setStatus("local");
       return;
     }
 
     /* 在线路径也保留本地结果：官方记录在几十毫秒内就查完了，
        没道理让它陪着 AI 一起等十几秒。加载时先把证据卡显示出来。 */
-    setLocal({ evidence, flags, reason: "offline" });
+    setLocal({ evidence, registries: registryMeta, flags, reason: "offline" });
     setStatus("loading");
     try {
       const res = await fetch("/api/analyze", {
@@ -92,14 +107,14 @@ export default function Home() {
       addHistory(input, parsed);
     } catch {
       // 网络在中途断了，或服务端挂了：不报错，回落到本地结果
-      setLocal({ evidence, flags, reason: "offline" });
+      setLocal({ evidence, registries: registryMeta, flags, reason: "offline" });
       setStatus("local");
     }
   }
 
   const shareText = buildShareText();
   function buildShareText(): string {
-    const ev = data?.evidence ?? local?.evidence;
+    const ev = (data?.evidence ?? local?.evidence ?? [])[0];
     const lines: string[] = [];
     if (ev) {
       lines.push(`${t.evidence.found}: ${ev.product}`);
@@ -213,9 +228,11 @@ export default function Home() {
         {status === "loading" && (
           <>
             {/* 官方记录不用等 AI —— 它已经查好了 */}
-            {local?.evidence ? (
-              <div className="mb-6">
-                <EvidenceCard evidence={local.evidence} />
+            {local?.evidence.length ? (
+              <div className="mb-6 flex flex-col gap-4">
+                {local.evidence.map((e) => (
+                  <EvidenceCard key={e.source.id + e.notifNo} evidence={e} />
+                ))}
               </div>
             ) : null}
             <LoadingState />
@@ -227,9 +244,11 @@ export default function Home() {
 
         {status === "local" && local && (
           <>
-            {local.evidence ? (
-              <div className="mb-6">
-                <EvidenceCard evidence={local.evidence} />
+            {local.evidence.length ? (
+              <div className="mb-6 flex flex-col gap-4">
+                {local.evidence.map((e) => (
+                  <EvidenceCard key={e.source.id + e.notifNo} evidence={e} />
+                ))}
               </div>
             ) : null}
             <OfflineResult
@@ -245,9 +264,11 @@ export default function Home() {
 
         {status === "done" && data && (
           <>
-            {data.evidence ? (
-              <div className="mb-6">
-                <EvidenceCard evidence={data.evidence} />
+            {data.evidence.length ? (
+              <div className="mb-6 flex flex-col gap-4">
+                {data.evidence.map((e) => (
+                  <EvidenceCard key={e.source.id + e.notifNo} evidence={e} />
+                ))}
               </div>
             ) : null}
 

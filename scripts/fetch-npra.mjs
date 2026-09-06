@@ -18,7 +18,11 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 const SOURCE = {
+  id: "npra-cosmetics",
   name: "Cancelled Cosmetic Notifications",
+  jurisdiction: "MY",
+  authority: "primary",
+  hasPerItemLink: false,
   publisher: "National Pharmaceutical Regulatory Agency (NPRA), Ministry of Health Malaysia",
   cataloguePage: "https://data.gov.my/data-catalogue/cosmetic_notifications_cancelled",
   downloadUrl: "https://storage.data.gov.my/healthcare/cosmetic_notifications_cancelled.csv",
@@ -108,14 +112,14 @@ const out = {
   entries,
 };
 
-mkdirSync(join(ROOT, "data"), { recursive: true });
-writeFileSync(join(ROOT, "data", "npra-blacklist.json"), JSON.stringify(out, null, 2) + "\n");
+mkdirSync(join(ROOT, "data", "registries"), { recursive: true });
+writeFileSync(join(ROOT, "data", "registries", "npra-cosmetics.json"), JSON.stringify(out, null, 2) + "\n");
 
 const substances = new Map();
 for (const e of entries)
   for (const s of e.substances) substances.set(s, (substances.get(s) ?? 0) + 1);
 
-console.log(`✓ ${entries.length} 条 → data/npra-blacklist.json`);
+console.log(`✓ ${entries.length} 条 → data/registries/npra-cosmetics.json`);
 console.log(
   "  检出成分 top5：",
   [...substances.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([s, n]) => `${s}(${n})`).join(" ")

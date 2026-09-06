@@ -1,13 +1,17 @@
 {
   "source": {
+    "id": "npra-cosmetics",
     "name": "Cancelled Cosmetic Notifications",
+    "jurisdiction": "MY",
+    "authority": "primary",
+    "hasPerItemLink": false,
     "publisher": "National Pharmaceutical Regulatory Agency (NPRA), Ministry of Health Malaysia",
     "cataloguePage": "https://data.gov.my/data-catalogue/cosmetic_notifications_cancelled",
     "downloadUrl": "https://storage.data.gov.my/healthcare/cosmetic_notifications_cancelled.csv",
     "evidencePage": "https://www.npra.gov.my/index.php/en/consumers/safety-information/cancellation-of-notified-cosmetic-products.html",
     "licence": "CC BY 4.0",
     "coverage": "Cosmetic products whose notification was cancelled after being found to contain scheduled poisons or banned substances.",
-    "retrievedAt": "2026-09-05",
+    "retrievedAt": "2026-09-06",
     "count": 125
   },
   "entries": [

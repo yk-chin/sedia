@@ -41,8 +41,9 @@ export function addHistory(message: string, data: Analysis): HistoryItem[] {
     excerpt: message.trim().slice(0, 140),
     score: data.score,
     band: data.band,
-    flagged: Boolean(data.evidence),
-    product: data.evidence?.product,
+    flagged: data.evidence.length > 0,
+    // 多份名单都命中时，取排在最前面的那条（马来西亚的权威裁定优先）
+    product: data.evidence[0]?.product,
   };
   const next = [item, ...readHistory()].slice(0, LIMIT);
   try {
