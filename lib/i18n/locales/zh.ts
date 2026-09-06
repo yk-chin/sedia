@@ -71,6 +71,19 @@ export const zh: Dict = {
     checkedLists: "已查询的名单",
     records: "条记录，抓取于",
   },
+  substances: {
+    bannedTitle: "官方记录点名过的成分",
+    bannedLead:
+      "这条消息里出现的成分，监管机构查处过——它被非法添加进健康和美容产品里。",
+    cited: "条官方记录点过它的名：",
+    bannedSource:
+      "直接取自这几份官方名单自己的成分栏，每一条都能点回点它名的那份记录。全程没有 AI 参与。",
+    medicineTitle: "消息里提到的真实药物",
+    medicineLead:
+      "这些是真实存在的药。提到它们本身没有任何问题——但如果有人叫你停药、换药或者加量，就要格外当心。",
+    medicineSource:
+      "用 Drugs@FDA 已批准药品目录识别的。它只能说明这是一个真实的药名，不能说明这条消息是真是假。",
+  },
   compare: {
     open: "为什么不直接问 AI？",
     openHint: "我们把同一条消息拿去问了通用聊天机器人。看看它答了什么。",
@@ -108,6 +121,15 @@ export const zh: Dict = {
     clear: "清空历史",
     flagged: "官方记录",
     open: "打开",
+    back: "全部记录",
+    delete: "删除这条记录",
+    recheck: "重新查一次",
+    checkedOn: "查验时间",
+    offlineItem: "这条是断网时查的，所以没有算出危害风险指数。",
+    recomputed:
+      "这里的官方记录和成分，是刚刚用保存的原文在这台设备上重新查了一遍得出的。",
+    notFound: "这条记录已经不在这台设备上了。",
+    noMessage: "这条是旧版本存的，只留了摘要，没法完整打开。",
   },
   settings: {
     title: "设置",
@@ -116,6 +138,9 @@ export const zh: Dict = {
     data: "数据来源",
     dataHint:
       "产品查验比对的是 NPRA 已撤销化妆品通知名单，发布于 data.gov.my，授权协议 CC BY 4.0。",
+    scope: "查得到什么，查不到什么",
+    scopeHint:
+      "Sihat 查的是被监管机构处理过的健康与美容产品，以及健康主张的措辞。它不覆盖管制麻醉品。美国 FDA 的记录值得一看，但那不是马来西亚监管机构的裁定。",
     privacy: "隐私",
     privacyHint:
       "无账号，服务器不存任何东西。语言偏好和历史记录都留在这个浏览器里。",

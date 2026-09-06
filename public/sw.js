@@ -6,7 +6,7 @@
    - 其余导航请求走 network-first，网络不通才回落缓存
 
    换版本号即可让旧缓存整体失效。 */
-const CACHE = "sihat-v2";
+const CACHE = "sihat-v3";
 const PRECACHE = [
   "/",
   "/history",
@@ -71,6 +71,12 @@ self.addEventListener("fetch", (event) => {
         caches.open(CACHE).then((c) => c.put(request, copy));
         return res;
       })
-      .catch(() => caches.match(request).then((hit) => hit || caches.match("/")))
+      .catch(() =>
+        // ignoreSearch：历史详情是 /history?id=xxx，每条 id 都不一样，
+        // 带 query 精确匹配永远命中不了预缓存的 /history 壳，断网就打不开了
+        caches
+          .match(request, { ignoreSearch: true })
+          .then((hit) => hit || caches.match("/"))
+      )
   );
 });

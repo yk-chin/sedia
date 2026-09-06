@@ -1,6 +1,6 @@
 import npra from "@/data/registries/npra-cosmetics.json";
 import moh from "@/data/registries/moh-banned.json";
-import { entryHits, isUnidentifiable, normalise, tokens } from "@/lib/core/match";
+import { entryHits, isUnidentifiable, tokens } from "@/lib/core/match";
 
 /* ============================================================
    官方名单查表 —— 确定性内核的一部分
@@ -185,19 +185,7 @@ export function toEvidence(hit: RegistryHit) {
   };
 }
 
-/** 消息里直接点名了违禁成分（不依赖产品名命中）。
-    只收辨识度高的药理名 —— STEROID 这种日常词会让「不含类固醇」也报警 */
-const SUBSTANCE_WATCH = [
-  "SIBUTRAMINE", "SILDENAFIL", "TADALAFIL", "DEXAMETHASONE",
-  "PHENOLPHTHALEIN", "HYDROQUINONE", "TRETINOIN", "BETAMETHASONE",
-  "MERCURY", "MERKURI", "CHLORPHENIRAMINE", "FRUSEMIDE", "CLOBETASOL",
-  "汞", "水银", "氢醌",
-];
-
-export function findSubstanceMentions(message: string): string[] {
-  const bag = new Set(tokens(message));
-  const raw = normalise(message);
-  return SUBSTANCE_WATCH.filter(
-    (s) => bag.has(s) || (/[一-鿿]/.test(s) && raw.includes(s))
-  );
-}
+/* 成分识别搬去了 lib/core/substances.ts。
+   这里原本有一个手打 16 个词的 SUBSTANCE_WATCH，而且从来没有任何地方调用它 ——
+   所以用户输入 sibutramine 永远什么都查不到。现在的字典是从这三份名单自己的
+   substances / subject 栏推导出来的，每一条都能点回具体记录。 */

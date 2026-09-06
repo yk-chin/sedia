@@ -15,11 +15,14 @@ import type { Dict } from "@/lib/i18n/dictionary";
 export function OfflineResult({
   flags,
   reason,
+  lead,
   onRetry,
 }: {
   flags: FlagKey[];
   /** offline = 真没网；saver = 用户主动开了省流量 */
   reason: "offline" | "saver";
+  /** 覆盖开头那句。历史详情里「现在没网」是错的 —— 那是当时没网 */
+  lead?: string;
   onRetry?: () => void;
 }) {
   const { t } = useLang();
@@ -35,7 +38,8 @@ export function OfflineResult({
           </h2>
         </div>
         <p className="mt-3 max-w-[62ch] text-body text-ink">
-          {reason === "offline" ? t.offline.leadOffline : t.offline.leadSaver}
+          {lead ??
+            (reason === "offline" ? t.offline.leadOffline : t.offline.leadSaver)}
         </p>
       </div>
 

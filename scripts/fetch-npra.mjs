@@ -1,5 +1,5 @@
 /**
- * 把 NPRA「因含违禁成分被撤销通知的化妆品」名单抓下来，落成 data/npra-blacklist.json。
+ * 把 NPRA「因含违禁成分被撤销通知的化妆品」名单抓下来，落成 data/registries/npra-cosmetics.json。
  *
  * 为什么要落盘而不是运行时去抓：
  * 现场 WiFi 一抖，运行时抓取就是一个崩点。落盘后 build 和运行时都零网络依赖，
@@ -72,7 +72,7 @@ function parseCsv(text) {
 
 const res = await fetch(SOURCE.downloadUrl);
 if (!res.ok) {
-  console.error(`抓取失败 HTTP ${res.status} — 保留现有 npra-blacklist.json 不动`);
+  console.error(`抓取失败 HTTP ${res.status} — 保留现有 npra-cosmetics.json 不动`);
   process.exit(1);
 }
 

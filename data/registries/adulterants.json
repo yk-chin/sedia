@@ -1,0 +1,1357 @@
+{
+  "source": {
+    "id": "adulterants",
+    "name": "Substances named in official enforcement records",
+    "derivedFrom": [
+      "npra-cosmetics",
+      "moh-banned",
+      "fda-healthfraud"
+    ],
+    "note": "Derived from the substance columns of the three registries. Not a separate authority — every entry points back at the records that named it.",
+    "builtAt": "2026-09-06",
+    "count": 116
+  },
+  "entries": [
+    {
+      "name": "SILDENAFIL",
+      "aliases": [
+        "AILDENAFIL",
+        "SIDENAFIL"
+      ],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "moh-banned": 1,
+        "fda-healthfraud": 461
+      },
+      "total": 462
+    },
+    {
+      "name": "SIBUTRAMINE",
+      "aliases": [
+        "SSBUTRAMINE"
+      ],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "moh-banned": 2,
+        "fda-healthfraud": 358
+      },
+      "total": 360
+    },
+    {
+      "name": "MERCURY",
+      "aliases": [
+        "MERKURI"
+      ],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 64,
+        "moh-banned": 44
+      },
+      "total": 108
+    },
+    {
+      "name": "HYDROQUINONE",
+      "aliases": [
+        "HIDROKUINON",
+        "HYDROKUINON"
+      ],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "npra-cosmetics": 38,
+        "moh-banned": 20,
+        "fda-healthfraud": 22
+      },
+      "total": 80
+    },
+    {
+      "name": "TRETINOIN",
+      "aliases": [
+        "TRETNON"
+      ],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 28,
+        "moh-banned": 20
+      },
+      "total": 48
+    },
+    {
+      "name": "DEXAMETHASONE",
+      "aliases": [],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "moh-banned": 2,
+        "fda-healthfraud": 44
+      },
+      "total": 46
+    },
+    {
+      "name": "BETAMETHASONE",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "moh-banned": 20
+      },
+      "total": 20
+    },
+    {
+      "name": "CHLORPHENIRAMINE",
+      "aliases": [],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "npra-cosmetics": 1,
+        "moh-banned": 3,
+        "fda-healthfraud": 4
+      },
+      "total": 8
+    },
+    {
+      "name": "FUROSEMIDE",
+      "aliases": [
+        "FRUSEMIDE"
+      ],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "moh-banned": 2,
+        "fda-healthfraud": 4
+      },
+      "total": 6
+    },
+    {
+      "name": "MICONAZOLE",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 3,
+        "moh-banned": 3
+      },
+      "total": 6
+    },
+    {
+      "name": "METRONIDAZOLE",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 4,
+        "moh-banned": 1
+      },
+      "total": 5
+    },
+    {
+      "name": "CLINDAMYCIN",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 3,
+        "moh-banned": 1
+      },
+      "total": 4
+    },
+    {
+      "name": "DIPHENHYDRAMINE",
+      "aliases": [],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "npra-cosmetics": 2,
+        "fda-healthfraud": 1
+      },
+      "total": 3
+    },
+    {
+      "name": "IBUPROFEN",
+      "aliases": [],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "moh-banned": 1,
+        "fda-healthfraud": 2
+      },
+      "total": 3
+    },
+    {
+      "name": "SULFAMETHOXAZOLE",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "TRIMETHOPRIM",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "AZELAIC ACID",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 1,
+        "moh-banned": 1
+      },
+      "total": 2
+    },
+    {
+      "name": "CHLORAMPHENICOL",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "KETOCONAZOLE",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "LOVASTATIN",
+      "aliases": [],
+      "citedBy": [
+        "MY",
+        "US"
+      ],
+      "refs": {
+        "moh-banned": 1,
+        "fda-healthfraud": 1
+      },
+      "total": 2
+    },
+    {
+      "name": "CLARITHROMYCIN",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "moh-banned": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "GRISEOFULVIN",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "PARACETAMOL",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "npra-cosmetics": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "TETRACYCLINE",
+      "aliases": [],
+      "citedBy": [
+        "MY"
+      ],
+      "refs": {
+        "moh-banned": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "TADALAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 262
+      },
+      "total": 262
+    },
+    {
+      "name": "PHENOLPHTHALEIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 107
+      },
+      "total": 107
+    },
+    {
+      "name": "SULFOAILDENAFIL",
+      "aliases": [
+        "SULFOAIDENAFIL",
+        "SULFOAILDENFIL",
+        "SULFOSILDENAFIL"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 100
+      },
+      "total": 100
+    },
+    {
+      "name": "SUPERDROL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 89
+      },
+      "total": 89
+    },
+    {
+      "name": "ANDROSTENEDIONE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 88
+      },
+      "total": 88
+    },
+    {
+      "name": "TURINABOL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 88
+      },
+      "total": 88
+    },
+    {
+      "name": "DICLOFENAC",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 59
+      },
+      "total": 59
+    },
+    {
+      "name": "DAPOXETINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 24
+      },
+      "total": 24
+    },
+    {
+      "name": "FLUOXETINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 23
+      },
+      "total": 23
+    },
+    {
+      "name": "N-DESMETHYLSIBUTRAMINE",
+      "aliases": [
+        "N-DESMETHYL SIBUTRAMINE"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 23
+      },
+      "total": 23
+    },
+    {
+      "name": "DESMETHYL CARBODENAFIL",
+      "aliases": [
+        "DESMETHYL CARBONDENAFIL"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 17
+      },
+      "total": 17
+    },
+    {
+      "name": "DESMETHYLSIBUTRAMINE",
+      "aliases": [
+        "DESMETHYL SIBUTRAMINE",
+        "DESMETHYLSIBURAMINE"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 17
+      },
+      "total": 17
+    },
+    {
+      "name": "ACETAMINOPHEN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 15
+      },
+      "total": 15
+    },
+    {
+      "name": "METHOCARBAMOL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 15
+      },
+      "total": 15
+    },
+    {
+      "name": "HYDROXYTHIOHOMOSILDENAFIL",
+      "aliases": [
+        "HYDROXYLTHIOHOMOSILDENAFIL"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 13
+      },
+      "total": 13
+    },
+    {
+      "name": "AMINOTADALAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 11
+      },
+      "total": 11
+    },
+    {
+      "name": "VARDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 11
+      },
+      "total": 11
+    },
+    {
+      "name": "METHYLENE CHLORIDE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 10
+      },
+      "total": 10
+    },
+    {
+      "name": "BENZYLSIBUTRAMINE",
+      "aliases": [
+        "BENZYL SIBUTRAMINE"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 8
+      },
+      "total": 8
+    },
+    {
+      "name": "THIOAIDENAFIL",
+      "aliases": [
+        "THIOAILDENAFIL"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 8
+      },
+      "total": 8
+    },
+    {
+      "name": "PIROXICAM",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 7
+      },
+      "total": 7
+    },
+    {
+      "name": "PROPOXYPHENYLSILDENAFIL",
+      "aliases": [
+        "PROPOXYPHENYL SILDENAFIL"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 7
+      },
+      "total": 7
+    },
+    {
+      "name": "THIOSILDENAFIL",
+      "aliases": [
+        "THIOSILDENAFI"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 6
+      },
+      "total": 6
+    },
+    {
+      "name": "CHLOROPRETADALAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 5
+      },
+      "total": 5
+    },
+    {
+      "name": "INDOMETHACIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 5
+      },
+      "total": 5
+    },
+    {
+      "name": "MELOXICAM",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 5
+      },
+      "total": 5
+    },
+    {
+      "name": "OMEPRAZOLE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 5
+      },
+      "total": 5
+    },
+    {
+      "name": "MITRAGYNINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 4
+      },
+      "total": 4
+    },
+    {
+      "name": "NORTADALAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 4
+      },
+      "total": 4
+    },
+    {
+      "name": "PHENYLBUTAZONE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 4
+      },
+      "total": 4
+    },
+    {
+      "name": "YELLOW OLEANDER",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 4
+      },
+      "total": 4
+    },
+    {
+      "name": "DESMETHYLCARBONDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "DIMETHYLSILDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "FLIBANSERIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "HYDROXYHOMOSILDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "LORCASERIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "METFORMIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "N-DI-DESMETHYLSIBUTRAMINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "SULFOHOMOSILDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "THIOMETHISOSILDENAFIL",
+      "aliases": [
+        "THIO-METHISOSILDENAFIL"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 3
+      },
+      "total": 3
+    },
+    {
+      "name": "AMINOTADAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "BENPROPERINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "BENZAMIDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "BUMETANIDE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "CHLORZOXAZONE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "CYPROHEPTADINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "DEISOBUTYLBENZYLSIBUTRAMINE",
+      "aliases": [
+        "DESISOBUTYLBENZYLSIBUTRAMINE"
+      ],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "DITHIODESMETHYL CARBODENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "ESZOPICLONE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "GLYBURIDE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "IBUTAMOREN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "KETOROLAC",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "MITRAGYNINE PSEUDOINDOXYL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "NERIIFOLIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "ORLISTAT",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "PHENYTOIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "TAPENTADOL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "THEOPHYLLINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "THEVETIN B",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "TIANEPTINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "YOHIMBINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "ZOPICLONE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 2
+      },
+      "total": 2
+    },
+    {
+      "name": "ANIRACETAM",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "AVANAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "BISACODYL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "CETILISTAT",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "CHLORPORMAZINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "CIPROFLOXACIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "DESMETHYL THIOSILDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "DIAZEPAM",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "DIDESMETHYL SIBUTRAMINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "DIMETHYLACETILDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "DOXEPIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "EPHEDRINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "FENFLURAMINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "FENPROPOREX",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "METHOCRABAMOL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "MOROXYDINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "N-DESMETHYL TADALAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "NAPROXEN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "NEFOPAM",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "NORACETILDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "PAYNANTHEINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "PHENIBUT",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "PHENTOLAMINE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "PIPERADINO VARDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "PROPANOLOL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "RIMONABANT",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "SULFOHYDROXYHOMOSILDENAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "TADAFIL",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "TERAZOSIN",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    },
+    {
+      "name": "TESTOSTERONE PROPIONATE",
+      "aliases": [],
+      "citedBy": [
+        "US"
+      ],
+      "refs": {
+        "fda-healthfraud": 1
+      },
+      "total": 1
+    }
+  ]
+}

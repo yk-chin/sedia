@@ -74,6 +74,19 @@ export const ms: Dict = {
     checkedLists: "Senarai yang disemak",
     records: "rekod, diambil",
   },
+  substances: {
+    bannedTitle: "Bahan yang disebut dalam rekod rasmi",
+    bannedLead:
+      "Mesej ini menyebut bahan yang pernah dikesan pihak berkuasa dicampur secara haram ke dalam produk kesihatan dan kecantikan.",
+    cited: "rekod rasmi menyebutnya:",
+    bannedSource:
+      "Diambil terus daripada lajur bahan dalam senarai rasmi itu sendiri — setiap entri berpaut kembali kepada rekod yang menyebutnya. Tiada AI terlibat.",
+    medicineTitle: "Ubat sebenar yang disebut",
+    medicineLead:
+      "Ini ubat yang benar-benar wujud. Menyebutnya bukan masalah — tetapi berhati-hatilah dengan mana-mana mesej yang menyuruh anda berhenti, menggantikan atau menggandakan ubat.",
+    medicineSource:
+      "Dikenal pasti menggunakan senarai produk diluluskan Drugs@FDA. Senarai itu hanya mengesahkan nama ubat yang sebenar; ia tidak mengesahkan kandungan mesej ini.",
+  },
   compare: {
     open: "Kenapa tidak tanya AI sahaja?",
     openHint:
@@ -113,6 +126,17 @@ export const ms: Dict = {
     clear: "Kosongkan sejarah",
     flagged: "Rekod rasmi",
     open: "Buka",
+    back: "Semua semakan",
+    delete: "Padam semakan ini",
+    recheck: "Semak semula",
+    checkedOn: "Disemak",
+    offlineItem:
+      "Semakan ini dibuat tanpa sambungan, jadi Indeks Risiko Bahaya tidak dikira.",
+    recomputed:
+      "Rekod rasmi dan bahan yang ditunjukkan di sini baru sahaja dicari semula pada peranti ini, daripada mesej yang disimpan.",
+    notFound: "Semakan itu tiada lagi pada peranti ini.",
+    noMessage:
+      "Versi lama hanya menyimpan ringkasan semakan ini, jadi ia tidak dapat dibuka sepenuhnya.",
   },
   settings: {
     title: "Tetapan",
@@ -121,6 +145,9 @@ export const ms: Dict = {
     data: "Sumber data",
     dataHint:
       "Semakan produk dibuat terhadap senarai notifikasi kosmetik dibatalkan NPRA, diterbitkan di data.gov.my di bawah CC BY 4.0.",
+    scope: "Apa yang disemak — dan apa yang tidak",
+    scopeHint:
+      "Sihat menyemak produk kesihatan dan kecantikan yang telah diambil tindakan oleh pihak berkuasa, serta cara sesuatu dakwaan kesihatan ditulis. Ia tidak meliputi dadah terkawal. Penyenaraian FDA Amerika Syarikat ialah bukti yang berguna, tetapi ia bukan keputusan pihak berkuasa Malaysia.",
     privacy: "Privasi",
     privacyHint:
       "Tiada akaun, tiada simpanan di pelayan. Pilihan bahasa dan sejarah anda kekal dalam pelayar ini.",

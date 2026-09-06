@@ -73,6 +73,19 @@ export const en = {
     checkedLists: "Lists checked",
     records: "records, retrieved",
   },
+  substances: {
+    bannedTitle: "Substances named in official records",
+    bannedLead:
+      "This message names a substance that regulators have found illegally added to health and beauty products.",
+    cited: "official records name it:",
+    bannedSource:
+      "Taken from the substance column of the official lists themselves — every entry links back to the records that named it. No AI involved.",
+    medicineTitle: "Real medicines mentioned",
+    medicineLead:
+      "These are recognised medicines. Naming one is not a problem in itself — but treat any message telling you to stop, replace or double one with real caution.",
+    medicineSource:
+      "Identified using the Drugs@FDA approved product listing. That listing says a name is a real medicine; it says nothing about whether this message is true.",
+  },
   compare: {
     open: "Why not just ask an AI?",
     openHint:
@@ -112,6 +125,17 @@ export const en = {
     clear: "Clear history",
     flagged: "Official record",
     open: "Open",
+    back: "All checks",
+    delete: "Delete this check",
+    recheck: "Check this again",
+    checkedOn: "Checked",
+    offlineItem:
+      "Checked without a connection, so no Harm Risk Index was computed for this one.",
+    recomputed:
+      "The official records and substances shown here were looked up again just now, on this device, from the saved message.",
+    notFound: "That check is no longer saved on this device.",
+    noMessage:
+      "An older version saved only a summary of this check, so it cannot be reopened in full.",
   },
   settings: {
     title: "Settings",
@@ -120,6 +144,9 @@ export const en = {
     data: "Data source",
     dataHint:
       "Product checks run against NPRA’s cancelled cosmetic notifications, published on data.gov.my under CC BY 4.0.",
+    scope: "What this covers — and what it does not",
+    scopeHint:
+      "Sihat checks health and beauty products that regulators have acted on, and the wording of health claims. It does not cover controlled narcotics. A US FDA listing is evidence worth reading, but it is not a ruling by a Malaysian regulator.",
     privacy: "Privacy",
     privacyHint:
       "No account, no server-side storage. Your language choice and history stay in this browser.",

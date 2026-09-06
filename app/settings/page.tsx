@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n/context";
 import { LANGUAGES, LANG_CODES } from "@/lib/i18n/dictionary";
 import { MY_REGISTRIES } from "@/lib/core/registry";
+import { ADULTERANT_SOURCE } from "@/lib/core/substances";
 import {
   readPrefs,
   writePrefs,
@@ -166,8 +167,24 @@ export default function SettingsPage() {
           <ExtLink href="https://www.fda.gov/consumers/health-fraud-scams/health-fraud-product-database">
             US FDA Health Fraud Product Database
           </ExtLink>
+          <ExtLink href="https://www.accessdata.fda.gov/scripts/cder/daf/">
+            Drugs@FDA approved product listing
+          </ExtLink>
         </div>
+
+        {/* 成分字典不是第四个权威，它是前三份名单的派生物 —— 必须说清楚 */}
+        <dl className="mt-4 rounded-[14px] border border-hairline bg-surface">
+          <Row label="Substance list">{ADULTERANT_SOURCE.name}</Row>
+          <Row label="Derived from">
+            {ADULTERANT_SOURCE.derivedFrom.length} official lists
+          </Row>
+          <Row label="Substances">{ADULTERANT_SOURCE.count}</Row>
+          <Row label="Built">{ADULTERANT_SOURCE.builtAt}</Row>
+        </dl>
       </Section>
+
+      {/* ---- 边界：查不到什么，比查得到什么更该写清楚 ---- */}
+      <Section title={t.settings.scope} hint={t.settings.scopeHint} />
 
       {/* ---- 隐私 ---- */}
       <Section title={t.settings.privacy} hint={t.settings.privacyHint} />

@@ -6,12 +6,12 @@ import { LoadingState } from "@/components/states/LoadingState";
 import { EmptyState } from "@/components/states/EmptyState";
 import { ErrorState } from "@/components/states/ErrorState";
 import { AiComparison } from "@/components/AiComparison";
-import { EvidenceCard } from "@/components/EvidenceCard";
+import { FindingsList } from "@/components/FindingsList";
 import { OfflineResult } from "@/components/OfflineResult";
+import { SubstanceCard } from "@/components/SubstanceCard";
 import { ShareButton } from "@/components/ShareButton";
 import { DEMO_SEED_INPUTS } from "@/data/fixtures";
-import { findHits, toEvidence, loadFdaRegistry, MY_REGISTRIES } from "@/lib/core/registry";
-import { findFlags, type FlagKey } from "@/lib/core/flags";
+import { analyseLocally, warmLocalData, type LocalFindings } from "@/lib/core/local";
 import { useLang } from "@/lib/i18n/context";
 import { addHistory } from "@/lib/history";
 import { readPrefs } from "@/lib/prefs";
@@ -19,12 +19,7 @@ import { cn } from "@/lib/utils";
 import type { Analysis } from "@/lib/types";
 
 type Status = "idle" | "loading" | "done" | "local" | "error";
-type Local = {
-  evidence: Analysis["evidence"];
-  registries: Analysis["registries"];
-  flags: FlagKey[];
-  reason: "offline" | "saver";
-};
+type Local = LocalFindings & { reason: "offline" | "saver" };
 
 const MAX_CHARS = 2000;
 
@@ -42,6 +37,23 @@ export default function Home() {
 
   useEffect(() => {
     if (/Mac|iPhone|iPad/.test(navigator.userAgent)) setModKey("⌘");
+
+    /* 首屏画完后，趁空闲把两个按需字典（FDA 名单、药名）拉进 SW 缓存。
+       不预热的话，用户往往是**断网之后**才第一次点查验 —— 那时候已经拉不到了。
+       开了省流量就不预热，那本来就是「一个字节都别多用」的意思。 */
+    // 历史详情页的「重新查一次」把原文带在 ?m= 里。
+    // 用 window.location 而不是 useSearchParams：后者会强制整页进 Suspense
+    const m = new URLSearchParams(window.location.search).get("m");
+    if (m) {
+      setText(m);
+      void run(m);
+      window.history.replaceState(null, "", "/");
+    }
+
+    if (readPrefs().dataSaver) return;
+    const idle = window.requestIdleCallback?.bind(window) ?? ((f: () => void) => setTimeout(f, 1200));
+    idle(() => warmLocalData());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -60,39 +72,29 @@ export default function Home() {
     setShowCompare(false);
     setAnalysed(input);
 
-    /* 第一步永远在本地跑：查官方名单 + 关键词标记。
-       纯函数、零网络、几十毫秒。断网时这就是全部结果，
+    /* 第一步永远在本地跑：查官方名单 + 认成分 + 关键词标记。
+       确定性、几十毫秒。断网时这就是全部结果，
        在线时它让证据卡在 AI 还在想的时候就已经显示出来。 */
-    // 马来西亚两份名单已静态打包；FDA 那份 42KB，按需加载后由 SW 缓存
-    const registries = [...MY_REGISTRIES];
-    try {
-      registries.push(await loadFdaRegistry());
-    } catch {
-      // 加载不到 FDA 索引就只用本地两份，不影响主流程
-    }
-    const evidence = findHits(input, registries).map(toEvidence);
-    const flags = findFlags(input);
-    const registryMeta = registries.map((r) => ({
-      id: r.source.id,
-      name: r.source.name,
-      jurisdiction: r.source.jurisdiction,
-      count: r.source.count,
-      retrievedAt: r.source.retrievedAt,
-      cataloguePage: r.source.cataloguePage,
-    }));
+    const found = await analyseLocally(input);
 
     const saver = readPrefs().dataSaver && !forceOnline;
     const offline = typeof navigator !== "undefined" && !navigator.onLine;
 
+    /** 离线查的也要进历史 —— 否则关掉页面就什么都不剩了 */
+    const saveLocal = () =>
+      addHistory(input, null, {
+        flagged: found.evidence.length > 0 || found.adulterants.length > 0,
+        product: found.evidence[0]?.product ?? found.adulterants[0]?.name,
+      });
+
     if (saver || offline) {
-      setLocal({ evidence, registries: registryMeta, flags, reason: saver ? "saver" : "offline" });
+      setLocal({ ...found, reason: saver ? "saver" : "offline" });
       setStatus("local");
+      saveLocal();
       return;
     }
 
-    /* 在线路径也保留本地结果：官方记录在几十毫秒内就查完了，
-       没道理让它陪着 AI 一起等十几秒。加载时先把证据卡显示出来。 */
-    setLocal({ evidence, registries: registryMeta, flags, reason: "offline" });
+    setLocal({ ...found, reason: "offline" });
     setStatus("loading");
     try {
       const res = await fetch("/api/analyze", {
@@ -107,8 +109,8 @@ export default function Home() {
       addHistory(input, parsed);
     } catch {
       // 网络在中途断了，或服务端挂了：不报错，回落到本地结果
-      setLocal({ evidence, registries: registryMeta, flags, reason: "offline" });
       setStatus("local");
+      saveLocal();
     }
   }
 
@@ -227,14 +229,8 @@ export default function Home() {
         )}
         {status === "loading" && (
           <>
-            {/* 官方记录不用等 AI —— 它已经查好了 */}
-            {local?.evidence.length ? (
-              <div className="mb-6 flex flex-col gap-4">
-                {local.evidence.map((e) => (
-                  <EvidenceCard key={e.source.id + e.notifNo} evidence={e} />
-                ))}
-              </div>
-            ) : null}
+            {/* 官方记录和成分不用等 AI —— 它们已经查好了 */}
+            {local ? <FindingsList {...local} /> : null}
             <LoadingState />
           </>
         )}
@@ -244,13 +240,7 @@ export default function Home() {
 
         {status === "local" && local && (
           <>
-            {local.evidence.length ? (
-              <div className="mb-6 flex flex-col gap-4">
-                {local.evidence.map((e) => (
-                  <EvidenceCard key={e.source.id + e.notifNo} evidence={e} />
-                ))}
-              </div>
-            ) : null}
+            <FindingsList {...local} />
             <OfflineResult
               flags={local.flags}
               reason={local.reason}
@@ -264,13 +254,14 @@ export default function Home() {
 
         {status === "done" && data && (
           <>
-            {data.evidence.length ? (
-              <div className="mb-6 flex flex-col gap-4">
-                {data.evidence.map((e) => (
-                  <EvidenceCard key={e.source.id + e.notifNo} evidence={e} />
-                ))}
-              </div>
-            ) : null}
+            {/* 证据用服务端返回的（两边同一套纯函数，结果一致），
+                成分层只有本地算过，所以从 local 取 */}
+            <FindingsList
+              evidence={data.evidence}
+              adulterants={local?.adulterants ?? []}
+              medicines={local?.medicines ?? []}
+              registries={data.registries}
+            />
 
             <ResultCard data={data} />
 

@@ -24,7 +24,10 @@ const RULES: { key: FlagKey; patterns: RegExp[] }[] = [
   {
     key: "stopMedication",
     patterns: [
-      /\bstop(?:\s+\w+){0,2}\s+(?:taking|using|the\s+)?(?:medicat|medicine|pills?|drugs?|insulin)/i,
+      // 「stop taking your warfarin pills」中间隔了 3 个词，{0,2} 会漏掉 —— 实测踩到过
+      /\bstop(?:\s+\w+){0,3}\s+(?:taking|using|the\s+)?(?:medicat|medicine|pills?|drugs?|insulin)/i,
+      // 叫人停掉某样正在吃的东西，本身就值得提醒，不必等它把药名说全
+      /\b(?:stop|quit)\s+(?:taking|using)\b/i,
       /\bquit\s+(?:taking\s+)?(?:medicat|medicine|pills?)/i,
       /\bberhenti\s+(?:makan\s+|ambil\s+)?ubat/i,
       /停(?:用|服|吃)?药|停用.{0,4}药|别再吃药|不要再吃药/,
@@ -33,7 +36,8 @@ const RULES: { key: FlagKey; patterns: RegExp[] }[] = [
   {
     key: "replaceTreatment",
     patterns: [
-      /\binstead\s+of\b/i,
+      // 「drink this instead」后面不接 of，要求 "instead of" 会整句漏掉
+      /\binstead\b/i,
       /\breplaces?\b|\breplacing\b|\bsubstitute\s+for\b/i,
       /\bganti(?:kan)?\b|\bpengganti\b/i,
       /代替|替代|取代|不用去医院|不必看医生/,
